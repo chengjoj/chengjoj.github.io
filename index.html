@@ -65,13 +65,25 @@
         }
         .message {
             position: absolute;
-            top: 80%;
+            bottom: -30px; /* 紧贴着框框下方 */
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             font-size: 24px;
-            color: #000;
+            color: black;
             font-weight: bold;
-            display: none;
+            white-space: nowrap; /* 确保文字在一行内显示 */
+        }
+        .reset-button {
+            position: absolute;
+            bottom: -40px; /* 调整重置按钮的位置 */
+            right: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
         }
     </style>
 </head>
