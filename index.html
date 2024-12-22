@@ -79,19 +79,22 @@
             border-radius: 5px;
             font-size: 14px;
         }
-        .green-screen-left, .green-screen-right {
+        .side-image {
             position: fixed;
             top: 0;
             bottom: 0;
-            width: 150px; /* 动图宽度 */
-            background-color: #00ff00; /* 绿幕颜色 */
-            pointer-events: none; /* 防止动图阻挡点击 */
+            width: 200px; /* 根据实际图片尺寸调整 */
+            pointer-events: none; /* 防止图片阻挡点击 */
         }
-        .green-screen-left {
+        .side-image.left {
             left: 0;
+            background-image: url('7bd7d987-6c7b-4701-8f33-c0aaec26f57c.gif'); /* 左侧图片 */
+            background-size: cover;
         }
-        .green-screen-right {
+        .side-image.right {
             right: 0;
+            background-image: url('7bd7d987-6c7b-4701-8f33-c0aaec26f57c.gif'); /* 右侧图片 */
+            background-size: cover;
         }
     </style>
 </head>
@@ -101,8 +104,8 @@
     注：本站纯属娱乐，本站内容均被付青鹏本人知情且允许，任何与现实相关的内容均为巧合或自定义编写。
 </div>
 
-<div class="7bd7d987-6c7b-4701-8f33-c0aaec26f57c.gif"></div> <!-- 左侧绿幕 -->
-<div class="7bd7d987-6c7b-4701-8f33-c0aaec26f57c.gif"></div> <!-- 右侧绿幕 -->
+<div class="side-image left"></div> <!-- 左侧图片 -->
+<div class="side-image right"></div> <!-- 右侧图片 -->
 
 <div class="bouncing-container">
     <div class="bouncing-circle" id="bouncingCircle"></div>
