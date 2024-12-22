@@ -14,12 +14,13 @@
             background-size: cover;
         }
         .header {
-            text-align: left;
+            text-align: center;
             font-size: 14px;
             color: grey;
             position: absolute;
-            top: 10px;
-            left: 10px; /* 文字从左到右排开 */
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 800px; /* 限制宽度以适应框框 */
             padding: 10px;
             box-sizing: border-box;
@@ -42,7 +43,8 @@
             position: absolute;
             width: 50px; /* 减小半径以适应运动 */
             height: 50px;
-            background-color:url('20240110_1744911584205082624.jpg'); /* 自定义小球图片 */
+            background-image: url('20240110_1744911584205082624.jpg'); /* 使用圆形图片 */
+            background-size: cover;
             border-radius: 50%;
             cursor: pointer;
         }
