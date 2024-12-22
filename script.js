@@ -1,22 +1,16 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const resetButton = document.getElementById('resetButton');
-const ballRadius = 30; // Increased ball size
+const ballRadius = 20; // 可以根据需要调整圆形图片的大小
 let x = canvas.width / 2;
 let y = canvas.height / 2;
 let dx = 2;
 let dy = 2;
-let ballColor = '#0095DD';
 let speed = 2;
 
-const ball = document.createElement('canvas');
-const ballCtx = ball.getContext('2d');
-ball.width = ballRadius * 2;
-ball.height = ballRadius * 2;
-ballCtx.beginPath();
-ballCtx.arc(ballRadius, ballRadius, ballRadius, 0, Math.PI * 2);
-ballCtx.fillStyle = ballColor;
-ballCtx.fill();
+// 圆形图片的路径，确保你的项目文件夹中有这个图片
+const ballImage = new Image();
+ballImage.src = '20240110_1744911584205082624.jpg'; // 替换为你的圆形图片文件路径
 
 resetButton.addEventListener('click', function() {
     x = canvas.width / 2;
@@ -27,7 +21,7 @@ resetButton.addEventListener('click', function() {
 });
 
 canvas.addEventListener('click', function(event) {
-    if (isPointInBall(event.clientX, event.clientY)) {
+    if (isPointInBall(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)) {
         speed += 0.5;
         playSound();
     }
@@ -40,7 +34,7 @@ function isPointInBall(mouseX, mouseY) {
 }
 
 function playSound() {
-    const audio = new Audio('click-sound.mp3');
+    const audio = new Audio('split(1).mp3');
     audio.play();
 }
 
@@ -55,12 +49,12 @@ function draw() {
     y += dy * speed;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(ball, x - ballRadius, y - ballRadius);
+    ctx.drawImage(ballImage, x - ballRadius, y - ballRadius);
 
     requestAnimationFrame(draw);
 }
 
-canvas.width = window.innerWidth * 0.8; // Adjusted canvas size
-canvas.height = window.innerHeight * 0.8;
+canvas.width = canvas.parentNode.clientWidth; // 确保画布填满父容器
+canvas.height = canvas.parentNode.clientHeight;
 document.body.appendChild(canvas); // Append canvas to body after setting size
-draw();
+ballImage.onload = draw; // Start drawing when the ball image is loaded
