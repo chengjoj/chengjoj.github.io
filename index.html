@@ -148,8 +148,9 @@
         });
 
         resetButton.addEventListener('click', function() {
+            pauseAnimation(); // 暂停动画
             speed = initialSpeed; // 重置速度大小
-            resumeAnimation(); // 重置时恢复动画
+            resumeAnimation(); // 恢复动画
         });
 
         requestAnimationFrame(moveCircle); // 开始动画
