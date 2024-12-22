@@ -12,13 +12,14 @@
             font-family: Arial, sans-serif;
             background-image: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg'); /* 背景图片 */
             background-size: cover;
+            background-attachment: fixed; /* 背景跟随网页移动 */
         }
         .header {
             text-align: center;
             font-size: 14px;
-            color: grey;
+            color: black; /* 字体颜色改为黑色 */
             position: absolute;
-            bottom: 10px;
+            bottom: -30px; /* 紧挨着框框下方 */
             left: 50%;
             transform: translateX(-50%);
             width: 800px; /* 限制宽度以适应框框 */
@@ -41,31 +42,19 @@
         }
         .bouncing-circle {
             position: absolute;
-            width: 50px; /* 减小半径以适应运动 */
-            height: 50px;
+            width: 75px; /* 增大圆形图片的大小 */
+            height: 75px;
             background-image: url('20240110_1744911584205082624.jpg'); /* 使用圆形图片 */
             background-size: cover;
             border-radius: 50%;
             cursor: pointer;
-        }
-        .reset-button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            cursor: pointer;
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
         }
         .title {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 48px; /* 增大字体大小 */
+            font-size: 60px; /* 增大“青鹏网”三个字的大小 */
             font-weight: bold;
             color: #3498db;
             animation: colorChange 2s infinite alternate;
