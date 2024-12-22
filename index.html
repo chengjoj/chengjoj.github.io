@@ -11,7 +11,7 @@
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
             background-image: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg'); /* 背景图片 */
-            background-attachment: scroll; /* 背景跟随页面滚动 */
+            background-attachment: fixed; /* 背景固定，不随页面滚动 */
             background-size: cover;
             background-position: center center; /* 确保背景图片居中显示 */
         }
@@ -19,14 +19,12 @@
             text-align: center;
             font-size: 14px;
             color: grey;
-            position: absolute;
-            bottom: 100%; /* 移动到.bouncing-container正下方 */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px; /* 限制宽度以适应框框 */
-            padding: 10px;
+            position: relative; /* 修改为相对定位 */
+            top: 100%; /* 放置在.bouncing-container正下方 */
+            width: 800px; /* 与.bouncing-container宽度一致 */
+            margin: 0 auto; /* 水平居中 */
+            padding-top: 10px; /* 与.bouncing-container保持一定距离 */
             box-sizing: border-box;
-            white-space: nowrap; /* 确保文字在一行内显示 */
         }
         .bouncing-container {
             position: relative;
@@ -73,6 +71,18 @@
             color: #000;
             font-weight: bold;
             display: none;
+        }
+        .reset-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -138,3 +148,4 @@
 </script>
 </body>
 </html>
+123
