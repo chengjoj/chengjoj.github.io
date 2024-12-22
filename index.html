@@ -2,22 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>青鹏网</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Bouncing Circle</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            background-image: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg'); /* 背景图片 */
+            background-size: cover;
+        }
+        .header {
+            text-align: left;
+            font-size: 14px;
+            color: grey;
+            position: absolute;
+            top: 10px;
+            left: 10px; /* 文字从左到右排开 */
+            width: 800px; /* 限制宽度以适应框框 */
+            padding: 10px;
+            box-sizing: border-box;
+            white-space: nowrap; /* 确保文字在一行内显示 */
+        }
+        .bouncing-container {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            border: 4px solid #000;
+            overflow: hidden;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.5); /* 虚化的白色 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bouncing-circle {
+            position: absolute;
+            width: 50px; /* 减小半径以适应运动 */
+            height: 50px;
+            background-color:url('20240110_1744911584205082624.jpg'); /* 自定义小球图片 */
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .reset-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px; /* 增大字体大小 */
+            font-weight: bold;
+            color: #3498db;
+            animation: colorChange 2s infinite alternate;
+        }
+        @keyframes colorChange {
+            0% { color: #3498db; }
+            100% { color: #2ecc71; }
+        }
+        .message {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="background">
-            <img src="20240110_1744911584205082624.jpg" alt="Background Image">
-        </div>
-        <div class="frame">
-            <div class="logo">青鹏网</div>
-            <canvas id="canvas"></canvas>
-            <button id="resetButton">重置</button>
-        </div>
-        <p class="disclaimer">注：本站纯属娱乐，本站内容均被付青鹏本人知情且允许，任何与现实相关的内容均为巧合或自定义编写。</p>
-    </div>
-    <script src="script.js"></script>
+
+<div class="header">注：本站纯属娱乐，本站内容均被付青鹏本人知情且允许，任何与现实相关的内容均为巧合或自定义编写。</div>
+
+<div class="bouncing-container">
+    <div class="bouncing-circle" id="bouncingCircle"></div>
+    <div class="title">青鹏网</div>
+    <div class="message" id="message"></div>
+    <button class="reset-button" id="resetButton">重置速度</button>
+</div>
+
+<audio id="click-sound" src="split (1).mp3" preload="auto"></audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var bouncingContainer = document.querySelector('.bouncing-container');
+        var bouncingCircle = document.getElementById('bouncingCircle');
+        var resetButton = document.getElementById('resetButton');
+        var clickSound = document.getElementById('click-sound');
+        var messageDiv = document.getElementById('message');
+        var posX = bouncingContainer.clientWidth / 2;
+        var posY = bouncingContainer.clientHeight / 2;
+        var initialSpeed = 2; // 初始速度大小
+        var speed = initialSpeed; // 当前速度大小
+        var angle = Math.PI / 4; // 初始速度方向，45度角
+        var velocityX = Math.cos(angle); // 初始速度X
+        var velocityY = Math.sin(angle); // 初始速度Y
+
+        function moveCircle() {
+            posX += velocityX * speed;
+            posY += velocityY * speed;
+
+            if (posX <= 0 || posX >= bouncingContainer.clientWidth - bouncingCircle.clientWidth) {
+                velocityX = -velocityX;
+            }
+            if (posY <= 0 || posY >= bouncingContainer.clientHeight - bouncingCircle.clientHeight) {
+                velocityY = -velocityY;
+            }
+
+            bouncingCircle.style.left = posX + 'px';
+            bouncingCircle.style.top = posY + 'px';
+
+            requestAnimationFrame(moveCircle); // 递归调用以保持动画连续
+        }
+
+        bouncingCircle.addEventListener('click', function() {
+            clickSound.play();
+            messageDiv.textContent = '你已阻止看片中的父亲月月鸟';
+            messageDiv.style.display = 'block';
+            setTimeout(function() { messageDiv.style.display = 'none'; }, 2000);
+            speed += 0.5; // 增加速度大小
+        });
+
+        resetButton.addEventListener('click', function() {
+            speed = initialSpeed; // 重置速度大小
+        });
+
+        requestAnimationFrame(moveCircle); // 开始动画
+    });
+</script>
 </body>
 </html>
