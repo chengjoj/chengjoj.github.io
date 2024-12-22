@@ -1,31 +1,66 @@
-let velocity = 1; // Initial speed
-const logo = document.getElementById('logo');
-const resetButton = document.getElementById('reset-button');
-const audio = new Audio('path_to_your_audio.mp3');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const resetButton = document.getElementById('resetButton');
+const ballRadius = 30; // Increased ball size
+let x = canvas.width / 2;
+let y = canvas.height / 2;
+let dx = 2;
+let dy = 2;
+let ballColor = '#0095DD';
+let speed = 2;
 
-// Function to move the logo in a figure-8 pattern
-function moveLogo() {
-    const logoContainer = document.getElementById('logo-container');
-    const maxX = logoContainer.offsetWidth;
-    const maxY = logoContainer.offsetHeight;
-    const x = Math.sin(Date.now() / 500) * maxX / 2;
-    const y = Math.cos(Date.now() / 500) * maxY / 2;
-    logo.style.transform = `translate(${x}px, ${y}px)`;
+const ball = document.createElement('canvas');
+const ballCtx = ball.getContext('2d');
+ball.width = ballRadius * 2;
+ball.height = ballRadius * 2;
+ballCtx.beginPath();
+ballCtx.arc(ballRadius, ballRadius, ballRadius, 0, Math.PI * 2);
+ballCtx.fillStyle = ballColor;
+ballCtx.fill();
+
+resetButton.addEventListener('click', function() {
+    x = canvas.width / 2;
+    y = canvas.height / 2;
+    dx = 2;
+    dy = 2;
+    speed = 2;
+});
+
+canvas.addEventListener('click', function(event) {
+    if (isPointInBall(event.clientX, event.clientY)) {
+        speed += 0.5;
+        playSound();
+    }
+});
+
+function isPointInBall(mouseX, mouseY) {
+    const dx = mouseX - x;
+    const dy = mouseY - y;
+    return Math.sqrt(dx * dx + dy * dy) < ballRadius;
 }
 
-// Function to increase the speed and play audio on click
-logo.onclick = function() {
-    velocity += 0.1; // Increase speed
-    logo.style.transition = `transform ${velocity}s`;
-    audio.play(); // Play audio
-};
+function playSound() {
+    const audio = new Audio('click-sound.mp3');
+    audio.play();
+}
 
-// Function to reset the logo position and velocity
-resetButton.onclick = function() {
-    velocity = 1; // Reset speed
-    logo.style.transition = `transform ${velocity}s`;
-    logo.style.transform = 'translate(-50%, -50%)';
-};
+function draw() {
+    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+        dy = -dy;
+    }
+    x += dx * speed;
+    y += dy * speed;
 
-// Call the moveLogo function periodically to move the logo
-setInterval(moveLogo, 16); // Adjust the interval to control the smoothness of the movement
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(ball, x - ballRadius, y - ballRadius);
+
+    requestAnimationFrame(draw);
+}
+
+canvas.width = window.innerWidth * 0.8; // Adjusted canvas size
+canvas.height = window.innerHeight * 0.8;
+document.body.appendChild(canvas); // Append canvas to body after setting size
+draw();
