@@ -117,6 +117,7 @@
         var angle = Math.PI / 4; // 初始速度方向，45度角
         var velocityX = Math.cos(angle); // 初始速度X
         var velocityY = Math.sin(angle); // 初始速度Y
+        var animationFrameId; // 用于存储requestAnimationFrame的ID
 
         function moveCircle() {
             posX += velocityX * speed;
@@ -132,7 +133,15 @@
             bouncingCircle.style.left = posX + 'px';
             bouncingCircle.style.top = posY + 'px';
 
-            requestAnimationFrame(moveCircle); // 递归调用以保持动画连续
+            animationFrameId = requestAnimationFrame(moveCircle); // 保存ID以供后续取消动画帧
+        }
+
+        function pauseAnimation() {
+            cancelAnimationFrame(animationFrameId); // 取消动画帧
+        }
+
+        function resumeAnimation() {
+            animationFrameId = requestAnimationFrame(moveCircle); // 恢复动画帧
         }
 
         bouncingCircle.addEventListener('click', function() {
@@ -140,11 +149,14 @@
             messageDiv.textContent = '你已阻止看片中的父亲月月鸟';
             messageDiv.style.display = 'block';
             setTimeout(function() { messageDiv.style.display = 'none'; }, 2000);
+            pauseAnimation(); // 暂停动画
+            setTimeout(resumeAnimation, 2000); // 两秒后恢复动画
             speed += 0.5; // 增加速度大小
         });
 
         resetButton.addEventListener('click', function() {
             speed = initialSpeed; // 重置速度大小
+            resumeAnimation(); // 重置时恢复动画
         });
 
         requestAnimationFrame(moveCircle); // 开始动画
