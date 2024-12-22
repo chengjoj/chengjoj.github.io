@@ -81,7 +81,7 @@
         }
         .side-image {
             position: fixed;
-            top: 0;
+            top: 20px; /* 向上移动图片 */
             bottom: 0;
             width: 200px; /* 根据实际图片尺寸调整 */
             background-size: contain;
@@ -118,7 +118,7 @@
 <audio id="click-sound" src="split (1).mp3" preload="auto"></audio>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
         var bouncingContainer = document.querySelector('.bouncing-container');
         var bouncingCircle = document.getElementById('bouncingCircle');
         var resetButton = document.getElementById('resetButton');
