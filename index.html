@@ -110,6 +110,8 @@
         var angle = Math.PI / 4; // 初始速度方向，45度角
         var velocityX = Math.cos(angle); // 初始速度X
         var velocityY = Math.sin(angle); // 初始速度Y
+        var lastClickTime = 0; // 上次点击时间
+        var clickInterval = 1000; // 最小点击间隔1000毫秒
         var animationFrameId; // 用于存储requestAnimationFrame的ID
 
         function moveCircle() {
@@ -138,6 +140,14 @@
         }
 
         bouncingCircle.addEventListener('click', function() {
+            var now = new Date().getTime();
+            if (now - lastClickTime < clickInterval) {
+                messageDiv.textContent = '请勿重复点击';
+                messageDiv.style.display = 'block';
+                setTimeout(function() { messageDiv.style.display = 'none'; }, 2000);
+                return;
+            }
+            lastClickTime = now;
             clickSound.play();
             messageDiv.textContent = '你已阻止看片中的父亲月月鸟';
             messageDiv.style.display = 'block';
