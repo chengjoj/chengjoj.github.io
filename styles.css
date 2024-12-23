@@ -124,8 +124,8 @@ body, html {
 
 /* 按钮样式 */
 .button {
-    width: 90%; /* 按钮宽度更宽 */
-    height: 300px; /* 按钮高度与弹跳容器一致 */
+    width: 100%; /* 按钮宽度更宽 */
+    height: 400px; /* 按钮高度与弹跳容器一致 */
     background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
     margin: 20px 0;
     display: flex;
