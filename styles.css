@@ -121,54 +121,69 @@ body, html {
 
 /* 按钮样式 */
 .button {
-    width: 800px; /* 与弹跳容器宽度一致 */
+    width: 100%; /* 与弹跳容器宽度一致 */
     height: 350px; /* 比弹跳容器稍高 */
-    background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    color: black; /* 移除下划线 */
+    color: black; /* 文字颜色 */
     text-decoration: none; /* 移除下划线 */
-    transition: transform 0.3s, background-color 0.3s; /* 添加背景色变化过渡 */
+    transition: transform 0.3s; /* 过渡效果 */
 }
 
-/* 按钮背景覆盖层 */
-.button::before {
+/* 按钮背景样式 */
+.button::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: inherit;
-    opacity: 0.8; /* 保持背景图片的透明效果 */
+    background: inherit; /* 继承背景图片 */
+    opacity: 0.8; /* 背景图片的透明效果 */
     z-index: 0;
 }
 
 /* 按钮文本样式 */
 .button-text {
+    position: relative;
+    z-index: 1; /* 确保文本在背景之上 */
     width: 100%;
+    display: flex;
+    justify-content: space-between;
     padding: 0 20px;
+}
+
+/* 按钮左侧大标题样式 */
+.button-left {
+    width: 33.33%; /* 大标题占按钮的三分之一 */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    z-index: 1; /* 确保文本在背景之上 */
+}
+
+/* 按钮右侧介绍文字样式 */
+.button-right {
+    width: 66.66%; /* 介绍文字占按钮的三分之二 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* 按钮标题样式 */
 .button h2 {
     margin: 0;
-    font-size: 36px; /* 增大字体大小 */
+    font-size: 48px; /* 增大字体大小 */
     color: #333; /* 深灰色文字 */
 }
 
 /* 按钮段落样式 */
 .button p {
     margin: 0;
-    font-size: 18px; /* 增大字体大小 */
+    font-size: 24px; /* 增大字体大小 */
     color: #555; /* 深灰色文字 */
 }
 
