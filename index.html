@@ -187,26 +187,27 @@
     });
 </script>
 </body>
+</html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>主页面</title>
     <style>
+        /* 原有样式 */
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             background-color: #f0f0f0;
         }
-        .button-container {
+        /* ... 其他原有样式 ... */
+
+        /* 新按钮样式 */
+        .new-button-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .button {
+        .new-button {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -224,7 +225,7 @@
             overflow: hidden;
             position: relative; /* 用于定位伪元素 */
         }
-        .button::after {
+        .new-button::after {
             content: '';
             position: absolute;
             top: 0;
@@ -235,42 +236,45 @@
             z-index: 0; /* 确保伪元素在文字之下 */
             border-radius: 10px;
         }
-        .button h2, .button p {
+        .new-button h2, .new-button p {
             position: relative; /* 使文字位于伪元素之上 */
             z-index: 1;
         }
-        .button h2 {
+        .new-button h2 {
             margin: 0;
             font-size: 24px;
         }
-        .button p {
+        .new-button p {
             margin: 0;
             font-size: 14px;
         }
-        .button:hover, .button:focus {
+        .new-button:hover, .new-button:focus {
             filter: blur(0);
             transform: scale(1.05);
         }
-        .button:active {
+        .new-button:active {
             transform: scale(0.95);
         }
     </style>
 </head>
 <body>
-    <div class="button-container">
+    <!-- 原有的页面内容 -->
+    
+    <!-- 新按钮容器 -->
+    <div class="new-button-container">
         <!-- 按钮1 -->
-        <a href="page1.html" class="button" style="background-image: url('button1-image.jpg');">
+        <a href="page1.html" class="new-button" style="background-image: url('button1-image.jpg');">
             <h2>大标题1</h2>
             <p>这里是介绍文字1。</p>
         </a>
         <!-- 按钮2 -->
-        <a href="page2.html" class="button" style="background-image: url('button2-image.jpg');">
+        <a href="page2.html" class="new-button" style="background-image: url('button2-image.jpg');">
             <h2>大标题2</h2>
             <p>这里是介绍文字2。</p>
         </a>
         <!-- ... 其他按钮 ... -->
         <!-- 按钮10 -->
-        <a href="page10.html" class="button" style="background-image: url('button10-image.jpg');">
+        <a href="page10.html" class="new-button" style="background-image: url('button10-image.jpg');">
             <h2>大标题10</h2>
             <p>这里是介绍文字10。</p>
         </a>
