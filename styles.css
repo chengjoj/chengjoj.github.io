@@ -11,7 +11,6 @@ body, html {
     background-position: center center; /* 确保背景图片居中显示 */
 }
 
-/* 头部样式 */
 .header {
     text-align: center;
     font-size: 14px;
@@ -34,7 +33,6 @@ body, html {
     justify-content: center;
 }
 
-/* 弹跳圆形样式 */
 .bouncing-circle {
     position: absolute;
     width: 75px; /* 增加圆形图片大小 */
@@ -45,7 +43,6 @@ body, html {
     cursor: pointer;
 }
 
-/* 标题样式 */
 .title {
     position: absolute;
     top: 50%;
@@ -57,13 +54,11 @@ body, html {
     animation: colorChange 2s infinite alternate;
 }
 
-/* 颜色变化动画 */
 @keyframes colorChange {
     0% { color: #3498db; }
     100% { color: #2ecc71; }
 }
 
-/* 消息样式 */
 .message {
     position: absolute;
     top: 80%;
@@ -75,7 +70,6 @@ body, html {
     display: none;
 }
 
-/* 重置按钮样式 */
 .reset-button {
     position: absolute;
     bottom: 10px;
@@ -89,7 +83,6 @@ body, html {
     font-size: 14px;
 }
 
-/* 侧边图片样式 */
 .side-image {
     position: fixed;
     top: -200px; /* 向上移动图片 */
@@ -101,13 +94,11 @@ body, html {
     pointer-events: none; /* 防止图片阻挡点击 */
 }
 
-/* 左侧侧边图片样式 */
 .side-image.left {
     left: 0;
     background-image: url('output-onlinegiftools.gif'); /* 左侧GIF图片 */
 }
 
-/* 右侧侧边图片样式 */
 .side-image.right {
     right: 0;
     background-image: url('output-onlinegiftools.gif'); /* 右侧GIF图片 */
@@ -117,11 +108,14 @@ body, html {
 .button-container {
     width: 800px; /* 与弹跳容器宽度一致 */
     margin: 0 auto; /* 水平居中 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* 按钮样式 */
 .button {
-    width: 100%; /* 与弹跳容器宽度一致 */
+    width: 800px; /* 与弹跳容器宽度一致 */
     height: 350px; /* 比弹跳容器稍高 */
     margin-bottom: 20px;
     display: flex;
@@ -132,10 +126,11 @@ body, html {
     color: black; /* 文字颜色 */
     text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
+    background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
+    backdrop-filter: blur(8px); /* 背景虚化效果 */
 }
 
-/* 按钮背景样式 */
-.button::after {
+.button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -143,11 +138,10 @@ body, html {
     right: 0;
     bottom: 0;
     background: inherit; /* 继承背景图片 */
+    z-index: 0; /* 确保背景在最底层 */
     opacity: 0.8; /* 背景图片的透明效果 */
-    z-index: 0;
 }
 
-/* 按钮文本样式 */
 .button-text {
     position: relative;
     z-index: 1; /* 确保文本在背景之上 */
@@ -157,42 +151,39 @@ body, html {
     padding: 0 20px;
 }
 
-/* 按钮左侧大标题样式 */
 .button-left {
     width: 33.33%; /* 大标题占按钮的三分之一 */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1); /* 轻微灰色背景 */
+    padding: 20px;
 }
 
-/* 按钮右侧介绍文字样式 */
 .button-right {
     width: 66.66%; /* 介绍文字占按钮的三分之二 */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 20px;
 }
 
-/* 按钮标题样式 */
 .button h2 {
     margin: 0;
     font-size: 48px; /* 增大字体大小 */
     color: #333; /* 深灰色文字 */
 }
 
-/* 按钮段落样式 */
 .button p {
     margin: 0;
     font-size: 24px; /* 增大字体大小 */
     color: #555; /* 深灰色文字 */
 }
 
-/* 按钮悬停和焦点效果 */
 .button:hover, .button:focus {
     transform: scale(1.05);
 }
 
-/* 按钮按下效果 */
 .button:active {
     transform: scale(0.95);
 }
