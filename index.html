@@ -192,7 +192,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>青鹏网</title>
+    <title>主页面</title>
     <style>
         body {
             margin: 0;
@@ -213,26 +213,31 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 80%;
-            padding: 20px;
-            margin: 10px 0;
+            width: 60%; /* 调整按钮宽度 */
+            padding: 30px; /* 调整按钮高度 */
+            margin: 20px 0;
             background-size: cover;
             background-position: center;
             background-blend-mode: multiply;
-            filter: blur(2px);
+            filter: blur(1px); /* 降低虚化效果 */
             color: white;
             text-decoration: none;
             transition: transform 0.3s, filter 0.3s;
-            border-radius: 10px; /* 使按钮有圆角 */
-            overflow: hidden; /* 确保虚化效果不超出按钮边界 */
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative; /* 用于定位文字 */
+        }
+        .button h2, .button p {
+            position: relative; /* 使文字位于背景之上 */
+            z-index: 1; /* 文字在背景之上 */
         }
         .button h2 {
             margin: 0;
-            font-size: 24px; /* 大字体 */
+            font-size: 24px;
         }
         .button p {
             margin: 0;
-            font-size: 14px; /* 小字体 */
+            font-size: 14px;
         }
         .button:hover, .button:focus {
             filter: blur(0);
@@ -246,7 +251,7 @@
 <body>
     <div class="button-container">
         <!-- 按钮1 -->
-        <a href="page1.html" class="button" style="background-image: url('button1-image.jpg');">
+        <a href="page1.html" class="button" style="background-image: url('20240110_1744911584205082624.jpg');">
             <h2>大标题1</h2>
             <p>这里是介绍文字1。</p>
         </a>
