@@ -2,101 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-            background-image: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg'); /* 背景图片 */
-            background-attachment: fixed; /* 背景固定，不随页面滚动 */
-            background-size: cover;
-            background-position: center center; /* 确保背景图片居中显示 */
-        }
-        .header {
-            text-align: center;
-            font-size: 14px;
-            color: black; /* 文字颜色调整为黑色 */
-            padding: 10px 0; /* 上下边距 */
-        }
-        .bouncing-container {
-            position: relative;
-            width: 800px;
-            height: 300px;
-            border: 4px solid #000;
-            overflow: hidden;
-            margin: 50px auto;
-            background-color: rgba(255, 255, 255, 0.5); /* 虚化的白色 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .bouncing-circle {
-            position: absolute;
-            width: 75px; /* 增加圆形图片大小 */
-            height: 75px;
-            background-image: url('20240110_1744911584205082624.jpg'); /* 使用圆形图片 */
-            background-size: cover;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .title {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 60px; /* 增加字体大小 */
-            font-weight: bold;
-            color: #3498db;
-            animation: colorChange 2s infinite alternate;
-        }
-        @keyframes colorChange {
-            0% { color: #3498db; }
-            100% { color: #2ecc71; }
-        }
-        .message {
-            position: absolute;
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #000;
-            font-weight: bold;
-            display: none;
-        }
-        .reset-button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            cursor: pointer;
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .side-image {
-            position: fixed;
-            top: -200px; /* 向上移动图片 */
-            bottom: 0;
-            width: 200px; /* 根据实际图片尺寸调整 */
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            pointer-events: none; /* 防止图片阻挡点击 */
-        }
-        .side-image.left {
-            left: 0;
-            background-image: url('output-onlinegiftools.gif'); /* 左侧GIF图片 */
-        }
-        .side-image.right {
-            right: 0;
-            background-image: url('output-onlinegiftools.gif'); /* 右侧GIF图片 */
-        }
-    </style>
+    <title>主页面</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -116,180 +23,35 @@
 
 <audio id="click-sound" src="split (1).mp3" preload="auto"></audio>
 
-<script>
- document.addEventListener('DOMContentLoaded', function() {
-        var bouncingContainer = document.querySelector('.bouncing-container');
-        var bouncingCircle = document.getElementById('bouncingCircle');
-        var resetButton = document.getElementById('resetButton');
-        var clickSound = document.getElementById('click-sound');
-        var messageDiv = document.getElementById('message');
-        var posX = bouncingContainer.clientWidth / 2;
-        var posY = bouncingContainer.clientHeight / 2;
-        var initialSpeed = 2; // 初始速度大小
-        var speed = initialSpeed; // 当前速度大小
-        var angle = Math.PI / 4; // 初始速度方向，45度角
-        var velocityX = Math.cos(angle); // 初始速度X
-        var velocityY = Math.sin(angle); // 初始速度Y
-        var lastClickTime = 0; // 上次点击时间
-        var clickInterval = 1000; // 最小点击间隔1000毫秒
-        var animationFrameId; // 用于存储requestAnimationFrame的ID
+<!-- 按钮容器 -->
+<div class="button-container">
+    <!-- 按钮1 -->
+    <a href="page1.html" class="button" style="background-image: url('button1-image.jpg');">
+        <div class="button-text">
+            <h2>大标题1</h2>
+            <p>这里是介绍文字1。</p>
+        </div>
+        <div class="button-right"></div>
+    </a>
+    <!-- 按钮2 -->
+    <a href="page2.html" class="button" style="background-image: url('button2-image.jpg');">
+        <div class="button-text">
+            <h2>大标题2</h2>
+            <p>这里是介绍文字2。</p>
+        </div>
+        <div class="button-right"></div>
+    </a>
+    <!-- ... 其他按钮 ... -->
+    <!-- 按钮10 -->
+    <a href="page10.html" class="button" style="background-image: url('button10-image.jpg');">
+        <div class="button-text">
+            <h2>大标题10</h2>
+            <p>这里是介绍文字10。</p>
+        </div>
+        <div class="button-right"></div>
+    </a>
+</div>
 
-        function moveCircle() {
-            posX += velocityX * speed;
-            posY += velocityY * speed;
-
-            if (posX <= 0 || posX >= bouncingContainer.clientWidth - bouncingCircle.clientWidth) {
-                velocityX = -velocityX;
-            }
-            if (posY <= 0 || posY >= bouncingContainer.clientHeight - bouncingCircle.clientHeight) {
-                velocityY = -velocityY;
-            }
-
-            bouncingCircle.style.left = posX + 'px';
-            bouncingCircle.style.top = posY + 'px';
-
-            animationFrameId = requestAnimationFrame(moveCircle); // 保存ID以供后续取消动画帧
-        }
-
-        function pauseAnimation() {
-            cancelAnimationFrame(animationFrameId); // 取消动画帧
-        }
-
-        function resumeAnimation() {
-            animationFrameId = requestAnimationFrame(moveCircle); // 恢复动画帧
-        }
-
-        bouncingCircle.addEventListener('click', function() {
-            var now = new Date().getTime();
-            if (now - lastClickTime < clickInterval) {
-                messageDiv.textContent = '请勿重复点击';
-                messageDiv.style.display = 'block';
-                setTimeout(function() { messageDiv.style.display = 'none'; }, 2000);
-                return;
-            }
-            lastClickTime = now;
-            clickSound.play();
-            messageDiv.textContent = '你已阻止看片中的父亲月月鸟';
-            messageDiv.style.display = 'block';
-            setTimeout(function() { messageDiv.style.display = 'none'; }, 2000);
-            pauseAnimation(); // 暂停动画
-            setTimeout(resumeAnimation, 2000); // 两秒后恢复动画
-            speed += 0.5; // 增加速度大小
-        });
-
-        resetButton.addEventListener('click', function() {
-            pauseAnimation(); // 暂停动画
-            speed = initialSpeed; // 重置速度大小
-            resumeAnimation(); // 恢复动画
-        });
-
-        requestAnimationFrame(moveCircle); // 开始动画
-    });
-</script>
-</body>
-</html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>主页面</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .new-button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .new-button {
-            display: flex;
-            align-items: center;
-            width: 50%; /* 按钮宽度少于页面宽度的一半 */
-            min-height: 150px; /* 按钮最小高度 */
-            margin: 10px 0;
-            background-color: rgba(255, 255, 255, 0.9); /* 增加透明效果 */
-            color: black;
-            text-decoration: none;
-            transition: transform 0.3s;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        .new-button-text {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 20px;
-        }
-        .new-button-left {
-            width: 60%; /* 大标题和灰白区分占按钮的左边 */
-            padding-right: 10px;
-        }
-        .new-button-right {
-            width: 40%; /* 内容介绍文字和灰白区分占按钮的右边 */
-            padding-left: 10px;
-            background-color: #f0f0f0; /* 灰白色背景 */
-            border-radius: 0 10px 10px 0;
-        }
-        .new-button h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .new-button p {
-            margin: 0;
-            font-size: 14px;
-        }
-        .new-button:hover, .new-button:focus {
-            transform: scale(1.05);
-        }
-        .new-button:active {
-            transform: scale(0.95);
-        }
-    </style>
-</head>
-<body>
-    <div class="new-button-container">
-        <!-- 按钮1 -->
-        <a href="page1.html" class="new-button" style="background-image: url('button1-image.jpg');">
-            <div class="new-button-text">
-                <div class="new-button-left">
-                    <h2>大标题1</h2>
-                </div>
-                <div class="new-button-right">
-                    <p>这里是介绍文字1。</p>
-                </div>
-            </div>
-        </a>
-        <!-- 按钮2 -->
-        <a href="page2.html" class="new-button" style="background-image: url('button2-image.jpg');">
-            <div class="new-button-text">
-                <div class="new-button-left">
-                    <h2>大标题2</h2>
-                </div>
-                <div class="new-button-right">
-                    <p>这里是介绍文字2。</p>
-                </div>
-            </div>
-        </a>
-        <!-- ... 其他按钮 ... -->
-        <!-- 按钮10 -->
-        <a href="page10.html" class="new-button" style="background-image: url('button10-image.jpg');">
-            <div class="new-button-text">
-                <div class="new-button-left">
-                    <h2>大标题10</h2>
-                </div>
-                <div class="new-button-right">
-                    <p>这里是介绍文字10。</p>
-                </div>
-            </div>
-        </a>
-    </div>
+<script src="script.js"></script>
 </body>
 </html>
