@@ -130,38 +130,45 @@ body, html {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    color: black; /* 移除下划线 */
+    text-decoration: none; /* 移除下划线 */
+    transition: transform 0.3s, background-color 0.3s; /* 添加背景色变化过渡 */
 }
 
-/* 按钮左侧大标题样式 */
-.button-left {
-    width: 33.33%; /* 大标题占按钮的三分之一 */
-    background-color: #e0e0e0; /* 灰色背景 */
-    padding: 20px;
+/* 按钮背景覆盖层 */
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    opacity: 0.8; /* 保持背景图片的透明效果 */
+    z-index: 0;
+}
+
+/* 按钮文本样式 */
+.button-text {
+    width: 100%;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-/* 按钮右侧介绍文字样式 */
-.button-right {
-    width: 66.66%; /* 介绍文字占按钮的三分之二 */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    z-index: 1; /* 确保文本在背景之上 */
 }
 
 /* 按钮标题样式 */
 .button h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 36px; /* 增大字体大小 */
     color: #333; /* 深灰色文字 */
 }
 
 /* 按钮段落样式 */
 .button p {
     margin: 0;
-    font-size: 14px;
+    font-size: 18px; /* 增大字体大小 */
     color: #555; /* 深灰色文字 */
 }
 
