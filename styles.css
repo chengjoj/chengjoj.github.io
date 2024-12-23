@@ -1,3 +1,4 @@
+/* 全局样式 */
 body, html {
     margin: 0;
     padding: 0;
@@ -10,6 +11,7 @@ body, html {
     background-position: center center; /* 确保背景图片居中显示 */
 }
 
+/* 头部样式 */
 .header {
     text-align: center;
     font-size: 14px;
@@ -17,6 +19,7 @@ body, html {
     padding: 10px 0; /* 上下边距 */
 }
 
+/* 弹跳容器样式 */
 .bouncing-container {
     position: relative;
     width: 800px;
@@ -31,6 +34,7 @@ body, html {
     justify-content: center;
 }
 
+/* 弹跳圆形样式 */
 .bouncing-circle {
     position: absolute;
     width: 75px; /* 增加圆形图片大小 */
@@ -41,6 +45,7 @@ body, html {
     cursor: pointer;
 }
 
+/* 标题样式 */
 .title {
     position: absolute;
     top: 50%;
@@ -52,11 +57,13 @@ body, html {
     animation: colorChange 2s infinite alternate;
 }
 
+/* 颜色变化动画 */
 @keyframes colorChange {
     0% { color: #3498db; }
     100% { color: #2ecc71; }
 }
 
+/* 消息样式 */
 .message {
     position: absolute;
     top: 80%;
@@ -68,6 +75,7 @@ body, html {
     display: none;
 }
 
+/* 重置按钮样式 */
 .reset-button {
     position: absolute;
     bottom: 10px;
@@ -81,6 +89,7 @@ body, html {
     font-size: 14px;
 }
 
+/* 侧边图片样式 */
 .side-image {
     position: fixed;
     top: -200px; /* 向上移动图片 */
@@ -92,16 +101,19 @@ body, html {
     pointer-events: none; /* 防止图片阻挡点击 */
 }
 
+/* 左侧侧边图片样式 */
 .side-image.left {
     left: 0;
     background-image: url('output-onlinegiftools.gif'); /* 左侧GIF图片 */
 }
 
+/* 右侧侧边图片样式 */
 .side-image.right {
     right: 0;
     background-image: url('output-onlinegiftools.gif'); /* 右侧GIF图片 */
 }
 
+/* 按钮容器样式 */
 .button-container {
     width: 100%;
     display: flex;
@@ -110,6 +122,7 @@ body, html {
     justify-content: center;
 }
 
+/* 按钮样式 */
 .button {
     width: 50%; /* 按钮宽度占屏幕宽度的一半 */
     min-height: 50vh; /* 按钮高度占屏幕高度的一半 */
@@ -126,11 +139,13 @@ body, html {
     overflow: hidden;
 }
 
+/* 按钮文本样式 */
 .button-text {
     width: 60%;
     padding: 0 20px;
 }
 
+/* 按钮右侧样式 */
 .button-right {
     width: 40%;
     background-color: #f0f0f0; /* 灰白色背景 */
@@ -141,20 +156,24 @@ body, html {
     padding: 0 20px;
 }
 
+/* 按钮标题样式 */
 .button h2 {
     margin: 0;
     font-size: 24px;
 }
 
+/* 按钮段落样式 */
 .button p {
     margin: 0;
     font-size: 14px;
 }
 
+/* 按钮悬停和焦点效果 */
 .button:hover, .button:focus {
     transform: scale(1.05);
 }
 
+/* 按钮按下效果 */
 .button:active {
     transform: scale(0.95);
 }
