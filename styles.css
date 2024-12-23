@@ -124,8 +124,8 @@ body, html {
 
 /* 按钮样式 */
 .button {
-    width: 50%; /* 按钮宽度占屏幕宽度的一半 */
-    min-height: 50vh; /* 按钮高度占屏幕高度的一半 */
+    width: 90%; /* 按钮宽度更宽 */
+    height: 300px; /* 按钮高度与弹跳容器一致 */
     background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
     margin: 20px 0;
     display: flex;
@@ -139,33 +139,37 @@ body, html {
     overflow: hidden;
 }
 
-/* 按钮文本样式 */
-.button-text {
-    width: 60%;
+/* 按钮左侧大标题样式 */
+.button-left {
+    width: 33.33%; /* 大标题占按钮的三分之一 */
     padding: 0 20px;
+    background-color: #e0e0e0; /* 稍微灰色的背景 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* 按钮右侧样式 */
+/* 按钮右侧介绍文字样式 */
 .button-right {
-    width: 40%;
-    background-color: #f0f0f0; /* 灰白色背景 */
-    border-radius: 0 10px 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 66.66%; /* 介绍文字占按钮的三分之二 */
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* 按钮标题样式 */
 .button h2 {
     margin: 0;
     font-size: 24px;
+    color: #333; /* 稍微深一些的文字颜色 */
 }
 
 /* 按钮段落样式 */
 .button p {
     margin: 0;
     font-size: 14px;
+    color: #555; /* 稍微深一些的文字颜色 */
 }
 
 /* 按钮悬停和焦点效果 */
