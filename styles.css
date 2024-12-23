@@ -1,1 +1,160 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background-image: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg'); /* 背景图片 */
+    background-attachment: fixed; /* 背景固定，不随页面滚动 */
+    background-size: cover;
+    background-position: center center; /* 确保背景图片居中显示 */
+}
 
+.header {
+    text-align: center;
+    font-size: 14px;
+    color: black; /* 文字颜色调整为黑色 */
+    padding: 10px 0; /* 上下边距 */
+}
+
+.bouncing-container {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    border: 4px solid #000;
+    overflow: hidden;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.5); /* 虚化的白色 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bouncing-circle {
+    position: absolute;
+    width: 75px; /* 增加圆形图片大小 */
+    height: 75px;
+    background-image: url('20240110_1744911584205082624.jpg'); /* 使用圆形图片 */
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px; /* 增加字体大小 */
+    font-weight: bold;
+    color: #3498db;
+    animation: colorChange 2s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% { color: #3498db; }
+    100% { color: #2ecc71; }
+}
+
+.message {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    display: none;
+}
+
+.reset-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.side-image {
+    position: fixed;
+    top: -200px; /* 向上移动图片 */
+    bottom: 0;
+    width: 200px; /* 根据实际图片尺寸调整 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none; /* 防止图片阻挡点击 */
+}
+
+.side-image.left {
+    left: 0;
+    background-image: url('output-onlinegiftools.gif'); /* 左侧GIF图片 */
+}
+
+.side-image.right {
+    right: 0;
+    background-image: url('output-onlinegiftools.gif'); /* 右侧GIF图片 */
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    width: 50%; /* 按钮宽度占屏幕宽度的一半 */
+    min-height: 50vh; /* 按钮高度占屏幕高度的一半 */
+    background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.button-text {
+    width: 60%;
+    padding: 0 20px;
+}
+
+.button-right {
+    width: 40%;
+    background-color: #f0f0f0; /* 灰白色背景 */
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.button h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.button p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.button:hover, .button:focus {
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
