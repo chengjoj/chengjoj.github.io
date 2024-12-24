@@ -85,7 +85,7 @@ body, html {
 
 .side-image {
     position: fixed;
-    top: -200px; /* 向上移动图片 */
+    top: -150px; /* 向上移动图片 */
     bottom: 0;
     width: 200px; /* 根据实际图片尺寸调整 */
     background-size: contain;
@@ -126,8 +126,6 @@ body, html {
     color: black; /* 文字颜色 */
     text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
-    background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
-    backdrop-filter: blur(8px); /* 背景虚化效果 */
 }
 
 .button::before {
@@ -137,9 +135,11 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: inherit; /* 继承背景图片 */
-    z-index: 0; /* 确保背景在最底层 */
+    background: url('button-background.jpg') no-repeat center center; /* 背景图片 */
+    background-size: cover;
+    mix-blend-mode: multiply; /* 混合模式 */
     opacity: 0.8; /* 背景图片的透明效果 */
+    z-index: 0; /* 确保背景在最底层 */
 }
 
 .button-text {
@@ -156,7 +156,6 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.1); /* 轻微灰色背景 */
     padding: 20px;
 }
 
