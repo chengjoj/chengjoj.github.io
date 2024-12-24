@@ -92,16 +92,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // 背景音乐选择界面显示与隐藏
     backgroundMusicButton.addEventListener('click', function(event) {
         event.stopPropagation(); // 阻止事件冒泡
-        backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'block' ? 'none' : 'block';
+        backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'none' ? 'block' : 'none';
     });
 
     // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
     document.addEventListener('click', (event) => {
-        if (event.target === menuButton || event.target === backgroundMusicButton || event.target === backgroundMusicMenu || event.target.closest('.background-music-menu')) {
-            return; // 如果点击的是按钮或菜单本身，则不执行任何操作
+        if (event.target === backgroundMusicButton) {
+            return; // 如果点击的是背景音乐按钮，则不执行任何操作
+        }
+        if (event.target === sideMenu || event.target.closest('.side-menu')) {
+            sideMenu.style.left = '-100%';
+            return; // 如果点击的是侧边菜单，则只关闭侧边菜单
         }
         sideMenu.style.left = '-100%';
-        backgroundMusicMenu.style.display = 'none';
+        backgroundMusicMenu.style.display = 'none'; // 关闭背景音乐选择界面
     });
 
     // 页面滚动时顶部横栏的显示与隐藏
