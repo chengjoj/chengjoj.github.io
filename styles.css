@@ -220,35 +220,35 @@ body, html {
     pointer-events: auto; /* 确保允许点击事件 */
 }
 
+/* ... 其他样式 ... */
+
 /* 侧边菜单样式 */
 .side-menu {
     position: fixed;
     top: 0;
     left: -100%; /* 初始隐藏 */
-    width: 250px;
+    width: 250px; /* 根据需要调整宽度 */
     height: 100%;
     background-color: rgba(255, 255, 255, 0.9);
     z-index: 500;
     transition: left 0.3s ease-in-out; /* 弹出动画 */
     overflow-y: auto;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px; /* 根据需要调整内边距 */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20% 0; /* 调整目录内容位置 */
+    justify-content: space-between; /* 使内容在侧边菜单中垂直分布 */
 }
 
 .side-menu-header {
     font-size: 24px; /* 增大字体大小 */
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* 根据需要调整外边距 */
 }
 
 .side-menu-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 1000px; /* 增加列表上下间距 */
 }
 
 .side-menu-list li a {
@@ -262,9 +262,11 @@ body, html {
 .side-menu-footer {
     font-size: 16px; /* 增大字体大小 */
     line-height: 1.6; /* 增加行高 */
-    margin-top: 20px; /* 增加与列表的间距 */
-    text-align: center;
+    color: black; /* 确保文字颜色可见 */
+    margin-top: auto; /* 将底部文字推到底部 */
 }
+
+/* ... 其他样式 ... */
 
 /* 背景音乐选择界面样式 */
 .background-music-menu {
