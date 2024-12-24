@@ -68,14 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const topBar = document.querySelector('.top-bar');
-    const menuButton = document.getElementById('menuButton');
     const backgroundMusicButton = document.getElementById('backgroundMusicButton');
-    const scrollTopButton = document.getElementById('scrollTopButton');
-    const sideMenu = document.getElementById('sideMenu');
     const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
-    const backgroundMusicPlayer = document.getElementById('backgroundMusicPlayer');
     const musicFiles = ['music1.mp3', 'music2.mp3', 'music3.mp3'];
+    const backgroundMusicPlayer = document.getElementById('backgroundMusicPlayer');
 
     // 随机选择一首背景音乐播放
     const randomMusic = musicFiles[Math.floor(Math.random() * musicFiles.length)];
@@ -83,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     backgroundMusicPlayer.volume = 0.1; // 设置音量为10%
     backgroundMusicPlayer.play();
 
-    // 侧边菜单显示与隐藏
+        // 侧边菜单显示与隐藏
     menuButton.addEventListener('click', function(event) {
         event.stopPropagation(); // 阻止事件冒泡
         sideMenu.style.left = sideMenu.style.left === '0px' ? '-100%' : '0';
@@ -92,23 +88,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // 背景音乐选择界面显示与隐藏
     backgroundMusicButton.addEventListener('click', function(event) {
         event.stopPropagation(); // 阻止事件冒泡
-        backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'none' ? 'block' : 'none';
+        // 切换背景音乐选择界面的显示状态
+        backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
+    // 点击界面以外的地方使背景音乐选择界面消失
     document.addEventListener('click', (event) => {
         if (event.target === backgroundMusicButton) {
             return; // 如果点击的是背景音乐按钮，则不执行任何操作
         }
-        if (event.target === sideMenu || event.target.closest('.side-menu')) {
-            sideMenu.style.left = '-100%';
-            return; // 如果点击的是侧边菜单，则只关闭侧边菜单
+        if (event.target === backgroundMusicMenu || event.target.closest('.background-music-menu')) {
+            return; // 如果点击的是背景音乐菜单或其内部按钮，则不执行任何操作
         }
-        sideMenu.style.left = '-100%';
         backgroundMusicMenu.style.display = 'none'; // 关闭背景音乐选择界面
     });
-
-    // 页面滚动时顶部横栏的显示与隐藏
+    
+        // 页面滚动时顶部横栏的显示与隐藏
     window.addEventListener('scroll', () => {
         if (window.scrollY > 0) {
             topBar.style.top = '0';
