@@ -73,36 +73,32 @@ menuButton.addEventListener('click', () => {
     sideMenu.style.left = sideMenu.offsetLeft === 0 ? '-100%' : '0';
 });
 
-// 背景音乐选择
+// 背景音乐选择界面显示与隐藏
 const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
 const backgroundMusicButton = document.getElementById('backgroundMusicButton');
 backgroundMusicButton.addEventListener('click', () => {
     backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'none' ? 'block' : 'none';
+    backgroundMusicMenu.style.opacity = backgroundMusicMenu.style.display === 'none' ? 0 : 1;
 });
 
-const musicSelectButtons = document.querySelectorAll('.music-select');
-musicSelectButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const musicSrc = button.getAttribute('data-src');
-        document.getElementById('backgroundMusicPlayer').src = musicSrc;
-        document.getElementById('backgroundMusicPlayer').play();
-    });
+// 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
+window.addEventListener('click', (e) => {
+    if (e.target === sideMenu) {
+        sideMenu.style.left = '-100%';
+    } else if (e.target === backgroundMusicMenu) {
+        backgroundMusicMenu.style.display = 'none';
+    }
 });
 
 // 页面滚动时顶部横栏的显示与隐藏
 window.addEventListener('scroll', () => {
     const topBar = document.querySelector('.top-bar');
-    if (window.scrollY > 0) {
-        topBar.style.opacity = 1;
+    const scrollY = window.scrollY;
+    if (scrollY > 50) { // 可以调整触发隐藏的阈值
+        topBar.style.top = '-50px'; // 可以调整隐藏的距离
     } else {
-        topBar.style.opacity = 0;
+        topBar.style.top = '0';
     }
-});
-
-// 快速回到顶部
-const scrollTopButton = document.getElementById('scrollTopButton');
-scrollTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // 目录快速定位
@@ -115,5 +111,16 @@ document.querySelectorAll('.side-menu-list a').forEach(anchor => {
             top: element.offsetTop,
             behavior: 'smooth'
         });
+        sideMenu.style.left = '-100%'; // 关闭侧边菜单
+    });
+});
+
+// 背景音乐选择
+document.querySelectorAll('.music-select').forEach(button => {
+    button.addEventListener('click', () => {
+        const musicSrc = button.getAttribute('data-src');
+        document.getElementById('backgroundMusicPlayer').src = musicSrc;
+        document.getElementById('backgroundMusicPlayer').play();
+        backgroundMusicMenu.style.display = 'none'; // 关闭背景音乐选择界面
     });
 });
