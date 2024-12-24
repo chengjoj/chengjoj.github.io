@@ -92,7 +92,7 @@ body, html {
 /* 侧边图片样式 */
 .side-image {
     position: fixed;
-    top: -70px; /* 向上移动图片 */
+    top: -60px; /* 向上移动图片 */
     bottom: 0;
     width: 200px; /* 根据实际图片尺寸调整 */
     background-size: contain;
@@ -126,7 +126,7 @@ body, html {
 .button {
     width: 100%; /* 与弹跳容器宽度一致 */
     height: 350px; /* 比弹跳容器稍高 */
-    margin-bottom: 75px; /* 增加按钮之间的间距 */
+    margin-bottom: 100px; /* 增加按钮之间的间距 */
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -248,7 +248,7 @@ body, html {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 100px; /* 增加列表上下间距 */
+    margin-bottom: 1000px; /* 增加列表上下间距 */
 }
 
 .side-menu-list li a {
