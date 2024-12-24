@@ -85,7 +85,7 @@ body, html {
 
 .side-image {
     position: fixed;
-    top: -100px; /* 向上移动图片 */
+    top: -200px; /* 向上移动图片 */
     bottom: 0;
     width: 200px; /* 根据实际图片尺寸调整 */
     background-size: contain;
@@ -115,7 +115,7 @@ body, html {
 
 /* 按钮样式 */
 .button {
-    width: 800px; /* 与弹跳容器宽度一致 */
+    width: 100%; /* 与弹跳容器宽度一致 */
     height: 350px; /* 比弹跳容器稍高 */
     margin-bottom: 20px;
     display: flex;
@@ -126,6 +126,7 @@ body, html {
     color: black; /* 文字颜色 */
     text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
+    background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
 }
 
 .button::before {
@@ -135,8 +136,8 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg') no-repeat center center; /* 背景图片 */
     background-size: cover;
+    background-position: center;
     mix-blend-mode: multiply; /* 混合模式 */
     opacity: 0.8; /* 背景图片的透明效果 */
     z-index: 0; /* 确保背景在最底层 */
