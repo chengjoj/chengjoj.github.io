@@ -92,7 +92,7 @@ body, html {
 /* 侧边图片样式 */
 .side-image {
     position: fixed;
-    top: -200px; /* 向上移动图片 */
+    top: -80px; /* 向上移动图片 */
     bottom: 0;
     width: 200px; /* 根据实际图片尺寸调整 */
     background-size: contain;
@@ -166,7 +166,6 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.1); /* 轻微灰色背景 */
     padding: 20px;
 }
 
@@ -248,7 +247,7 @@ body, html {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 20px; /* 增加列表上下间距 */
+    margin-bottom: 50px; /* 增加列表上下间距 */
 }
 
 .side-menu-list li a {
