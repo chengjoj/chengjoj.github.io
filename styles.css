@@ -139,7 +139,7 @@ body, html {
     background-size: cover;
     background-position: center;
     mix-blend-mode: multiply; /* 混合模式 */
-    opacity: 0.8; /* 背景图片的透明效果 */
+    opacity: 0.5; /* 背景图片的透明效果 */
     z-index: 0; /* 确保背景在最底层 */
 }
 
