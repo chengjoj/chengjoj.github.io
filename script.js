@@ -66,59 +66,79 @@ document.addEventListener('DOMContentLoaded', function() {
 
     requestAnimationFrame(moveCircle); // 开始动画
 });
-// 侧边菜单显示与隐藏
-const sideMenu = document.getElementById('sideMenu');
-const menuButton = document.getElementById('menuButton');
-menuButton.addEventListener('click', () => {
-    sideMenu.style.left = sideMenu.style.left === '0px' ? '-100%' : '0';
-});
+// 确保DOM加载完成后执行
+document.addEventListener('DOMContentLoaded', function() {
 
-// 背景音乐选择界面显示与隐藏
-const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
-const backgroundMusicButton = document.getElementById('backgroundMusicButton');
-backgroundMusicButton.addEventListener('click', () => {
-    backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'block' ? 'none' : 'block';
-    backgroundMusicMenu.style.opacity = backgroundMusicMenu.style.display === 'block' ? 1 : 0;
-});
-
-// 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
-document.addEventListener('click', (e) => {
-    if (e.target === sideMenu || e.target.closest('.side-menu') || e.target === backgroundMusicMenu || e.target.closest('.background-music-menu')) {
-        return;
-    }
-    sideMenu.style.left = '-100%';
-    backgroundMusicMenu.style.display = 'none';
-});
-
-// 页面滚动时顶部横栏的显示与隐藏
-window.addEventListener('scroll', () => {
-    const topBar = document.querySelector('.top-bar');
-    if (window.scrollY > 0) {
-        topBar.style.top = '0';
-    } else {
-        topBar.style.top = '-50px'; // 可以调整隐藏的距离
-    }
-});
-
-// 目录快速定位
-document.querySelectorAll('.side-menu-list a').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const blockId = anchor.getAttribute('href');
-        const element = document.querySelector(blockId);
-        window.scrollTo({
-            top: element.offsetTop,
-            behavior: 'smooth'
-        });
-        sideMenu.style.left = '-100%'; // 关闭侧边菜单
+    // 侧边菜单显示与隐藏
+    const sideMenu = document.getElementById('sideMenu');
+    const menuButton = document.getElementById('menuButton');
+    menuButton.addEventListener('click', () => {
+        sideMenu.style.left = sideMenu.style.left === '0px' ? '-100%' : '0';
+        if (sideMenu.style.left === '0px') {
+            sideMenu.style.opacity = '1';
+        } else {
+            sideMenu.style.opacity = '0';
+        }
     });
-});
 
-// 背景音乐选择
-document.querySelectorAll('.music-select').forEach(button => {
-    button.addEventListener('click', () => {
-        const musicSrc = button.getAttribute('data-src');
-        document.getElementById('backgroundMusicPlayer').src = musicSrc;
-        document.getElementById('backgroundMusicPlayer').play();
+    // 背景音乐选择界面显示与隐藏
+    const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
+    const backgroundMusicButton = document.getElementById('backgroundMusicButton');
+    backgroundMusicButton.addEventListener('click', () => {
+        if (backgroundMusicMenu.style.display === 'block') {
+            backgroundMusicMenu.style.display = 'none';
+            backgroundMusicMenu.style.opacity = '0';
+        } else {
+            backgroundMusicMenu.style.display = 'block';
+            backgroundMusicMenu.style.opacity = '1';
+        }
+    });
+
+    // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
+    document.addEventListener('click', (e) => {
+        if (e.target === sideMenu || e.target === backgroundMusicMenu) {
+            return;
+        }
+        if (sideMenu.style.left === '0') {
+            sideMenu.style.left = '-100%';
+            sideMenu.style.opacity = '0';
+        }
+        if (backgroundMusicMenu.style.display === 'block') {
+            backgroundMusicMenu.style.display = 'none';
+            backgroundMusicMenu.style.opacity = '0';
+        }
+    });
+
+    // 页面滚动时顶部横栏的显示与隐藏
+    window.addEventListener('scroll', () => {
+        const topBar = document.querySelector('.top-bar');
+        if (window.scrollY > 0) {
+            topBar.style.top = '0';
+        } else {
+            topBar.style.top = '-50px'; // 可以调整隐藏的距离
+        }
+    });
+
+    // 目录快速定位
+    document.querySelectorAll('.side-menu-list a').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const blockId = anchor.getAttribute('href');
+            const element = document.querySelector(blockId);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+            sideMenu.style.left = '-100%'; // 关闭侧边菜单
+        });
+    });
+
+    // 背景音乐选择
+    document.querySelectorAll('.music-select').forEach(button => {
+        button.addEventListener('click', () => {
+            const musicSrc = button.getAttribute('data-src');
+            document.getElementById('backgroundMusicPlayer').src = musicSrc;
+            document.getElementById('backgroundMusicPlayer').play();
+        });
     });
 });
