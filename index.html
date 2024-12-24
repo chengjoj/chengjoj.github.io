@@ -7,26 +7,37 @@
 </head>
 <body>
 
-<div class="header">
-    注：本站纯属娱乐，本站内容均被付青鹏本人知情且允许，任何与现实相关的内容均为巧合或自定义编写。
+<!-- 顶部小横栏 -->
+<div class="top-bar">
+    <div class="top-bar-button" id="menuButton">菜单</div>
+    <div class="top-bar-button" id="backgroundMusicButton">背景音乐</div>
+    <div class="top-bar-button" id="scrollTopButton">顶部</div>
 </div>
 
-<div class="side-image left"></div> <!-- 左侧GIF图片 -->
-<div class="side-image right"></div> <!-- 右侧GIF图片 -->
-
-<div class="bouncing-container">
-    <div class="bouncing-circle" id="bouncingCircle"></div>
-    <div class="title">青鹏网</div>
-    <div class="message" id="message"></div>
-    <button class="reset-button" id="resetButton">重置速度</button>
+<!-- 侧边菜单 -->
+<div class="side-menu" id="sideMenu">
+    <div class="side-menu-header">目录</div>
+    <ul class="side-menu-list">
+        <li><a href="#button1">大标题1</a></li>
+        <li><a href="#button2">大标题2</a></li>
+        <li><a href="#button3">大标题3</a></li>
+        <li><a href="#button4">大标题4</a></li>
+        <li><a href="#button5">大标题5</a></li>
+        <li><a href="#button6">大标题6</a></li>
+        <li><a href="#button7">大标题7</a></li>
+        <li><a href="#button8">大标题8</a></li>
+        <li><a href="#button9">大标题9</a></li>
+        <li><a href="#button10">大标题10</a></li>
+    </ul>
+    <div class="side-menu-footer">
+        <p>这里是一些文字...</p>
+    </div>
 </div>
-
-<audio id="click-sound" src="split (1).mp3" preload="auto"></audio>
 
 <!-- 按钮容器 -->
 <div class="button-container">
     <!-- 按钮1 -->
-    <a href="page1.html" class="button" style="background-image: url('20240110_1744911584205082624.jpg');">
+    <a href="page1.html" class="button" id="button1" style="background-image: url('button1-image.jpg');">
         <div class="button-text">
             <div class="button-left">
                 <h2>大标题1</h2>
@@ -37,7 +48,7 @@
         </div>
     </a>
     <!-- 按钮2 -->
-    <a href="page2.html" class="button" style="background-image: url('button2-image.jpg');">
+    <a href="page2.html" class="button" id="button2" style="background-image: url('button2-image.jpg');">
         <div class="button-text">
             <div class="button-left">
                 <h2>大标题2</h2>
@@ -49,7 +60,7 @@
     </a>
     <!-- ... 其他按钮 ... -->
     <!-- 按钮10 -->
-    <a href="page10.html" class="button" style="background-image: url('button10-image.jpg');">
+    <a href="page10.html" class="button" id="button10" style="background-image: url('button10-image.jpg');">
         <div class="button-text">
             <div class="button-left">
                 <h2>大标题10</h2>
@@ -60,6 +71,17 @@
         </div>
     </a>
 </div>
+
+<!-- 背景音乐选择界面 -->
+<div class="background-music-menu" id="backgroundMusicMenu">
+    <ul>
+        <li><button class="music-select" data-src="music1.mp3">音乐1</button></li>
+        <li><button class="music-select" data-src="music2.mp3">音乐2</button></li>
+        <li><button class="music-select" data-src="music3.mp3">音乐3</button></li>
+    </ul>
+</div>
+
+<audio id="backgroundMusicPlayer" src="" preload="auto"></audio>
 
 <script src="script.js"></script>
 </body>
