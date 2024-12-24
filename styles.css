@@ -247,7 +247,7 @@ body, html {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 10px; /* 增加列表上下间距 */
+    margin-bottom: -50px; /* 增加列表上下间距 */
 }
 
 .side-menu-list li a {
@@ -261,7 +261,7 @@ body, html {
 .side-menu-footer {
     font-size: 16px; /* 增大字体大小 */
     line-height: 1.6; /* 增加行高 */
-    margin-top: -20px; /* 增加与列表的间距 */
+    margin-top: 20px; /* 增加与列表的间距 */
     text-align: center;
 }
 
