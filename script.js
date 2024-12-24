@@ -70,34 +70,33 @@ document.addEventListener('DOMContentLoaded', function() {
 const sideMenu = document.getElementById('sideMenu');
 const menuButton = document.getElementById('menuButton');
 menuButton.addEventListener('click', () => {
-    sideMenu.style.left = sideMenu.offsetLeft === 0 ? '-100%' : '0';
+    sideMenu.style.left = sideMenu.style.left === '0px' ? '-100%' : '0';
 });
 
 // 背景音乐选择界面显示与隐藏
 const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
 const backgroundMusicButton = document.getElementById('backgroundMusicButton');
 backgroundMusicButton.addEventListener('click', () => {
-    backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'none' ? 'block' : 'none';
-    backgroundMusicMenu.style.opacity = backgroundMusicMenu.style.display === 'none' ? 0 : 1;
+    backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'block' ? 'none' : 'block';
+    backgroundMusicMenu.style.opacity = backgroundMusicMenu.style.display === 'block' ? 1 : 0;
 });
 
 // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
-window.addEventListener('click', (e) => {
-    if (e.target === sideMenu) {
-        sideMenu.style.left = '-100%';
-    } else if (e.target === backgroundMusicMenu) {
-        backgroundMusicMenu.style.display = 'none';
+document.addEventListener('click', (e) => {
+    if (e.target === sideMenu || e.target.closest('.side-menu') || e.target === backgroundMusicMenu || e.target.closest('.background-music-menu')) {
+        return;
     }
+    sideMenu.style.left = '-100%';
+    backgroundMusicMenu.style.display = 'none';
 });
 
 // 页面滚动时顶部横栏的显示与隐藏
 window.addEventListener('scroll', () => {
     const topBar = document.querySelector('.top-bar');
-    const scrollY = window.scrollY;
-    if (scrollY > 50) { // 可以调整触发隐藏的阈值
-        topBar.style.top = '-50px'; // 可以调整隐藏的距离
-    } else {
+    if (window.scrollY > 0) {
         topBar.style.top = '0';
+    } else {
+        topBar.style.top = '-50px'; // 可以调整隐藏的距离
     }
 });
 
@@ -121,6 +120,5 @@ document.querySelectorAll('.music-select').forEach(button => {
         const musicSrc = button.getAttribute('data-src');
         document.getElementById('backgroundMusicPlayer').src = musicSrc;
         document.getElementById('backgroundMusicPlayer').play();
-        backgroundMusicMenu.style.display = 'none'; // 关闭背景音乐选择界面
     });
 });
