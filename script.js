@@ -66,3 +66,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
     requestAnimationFrame(moveCircle); // 开始动画
 });
+// 侧边菜单显示与隐藏
+const sideMenu = document.getElementById('sideMenu');
+const menuButton = document.getElementById('menuButton');
+menuButton.addEventListener('click', () => {
+    sideMenu.style.left = sideMenu.offsetLeft === 0 ? '-100%' : '0';
+});
+
+// 背景音乐选择
+const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
+const backgroundMusicButton = document.getElementById('backgroundMusicButton');
+backgroundMusicButton.addEventListener('click', () => {
+    backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'none' ? 'block' : 'none';
+});
+
+const musicSelectButtons = document.querySelectorAll('.music-select');
+musicSelectButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const musicSrc = button.getAttribute('data-src');
+        document.getElementById('backgroundMusicPlayer').src = musicSrc;
+        document.getElementById('backgroundMusicPlayer').play();
+    });
+});
+
+// 页面滚动时顶部横栏的显示与隐藏
+window.addEventListener('scroll', () => {
+    const topBar = document.querySelector('.top-bar');
+    if (window.scrollY > 0) {
+        topBar.style.opacity = 1;
+    } else {
+        topBar.style.opacity = 0;
+    }
+});
+
+// 快速回到顶部
+const scrollTopButton = document.getElementById('scrollTopButton');
+scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 目录快速定位
+document.querySelectorAll('.side-menu-list a').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const blockId = anchor.getAttribute('href');
+        const element = document.querySelector(blockId);
+        window.scrollTo({
+            top: element.offsetTop,
+            behavior: 'smooth'
+        });
+    });
+});
