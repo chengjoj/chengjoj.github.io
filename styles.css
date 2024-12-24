@@ -85,7 +85,7 @@ body, html {
 
 .side-image {
     position: fixed;
-    top: -150px; /* 向上移动图片 */
+    top: -100px; /* 向上移动图片 */
     bottom: 0;
     width: 200px; /* 根据实际图片尺寸调整 */
     background-size: contain;
@@ -135,7 +135,7 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('button-background.jpg') no-repeat center center; /* 背景图片 */
+    background: url('5E391EE5D8A838BE005B3CCD11CAAF68.jpg') no-repeat center center; /* 背景图片 */
     background-size: cover;
     mix-blend-mode: multiply; /* 混合模式 */
     opacity: 0.8; /* 背景图片的透明效果 */
