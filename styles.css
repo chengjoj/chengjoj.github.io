@@ -281,7 +281,7 @@ body, html {
     padding: 20px;
     border-radius: 5px;
     display: none; /* 初始隐藏 */
-    opacity: 0;
+    opacity: 1; /* 确保不透明度为1 */
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* 弹出动画 */
 }
 
