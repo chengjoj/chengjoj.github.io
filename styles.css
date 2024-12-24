@@ -217,6 +217,7 @@ body, html {
     cursor: pointer;
     padding: 10px 15px;
     font-size: 16px;
+    pointer-events: auto; /* 确保允许点击事件 */
 }
 
 /* 侧边菜单样式 */
@@ -247,7 +248,7 @@ body, html {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: -50px; /* 增加列表上下间距 */
+    margin-bottom: 100px; /* 增加列表上下间距 */
 }
 
 .side-menu-list li a {
