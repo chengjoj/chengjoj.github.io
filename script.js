@@ -74,6 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollTopButton = document.getElementById('scrollTopButton');
     const sideMenu = document.getElementById('sideMenu');
     const backgroundMusicMenu = document.getElementById('backgroundMusicMenu');
+    const backgroundMusicPlayer = document.getElementById('backgroundMusicPlayer');
+    const musicFiles = ['music1.mp3', 'music2.mp3', 'music3.mp3'];
+
+    // 随机选择一首背景音乐播放
+    const randomMusic = musicFiles[Math.floor(Math.random() * musicFiles.length)];
+    backgroundMusicPlayer.src = randomMusic;
+    backgroundMusicPlayer.volume = 0.1; // 设置音量为10%
+    backgroundMusicPlayer.play();
 
     // 侧边菜单显示与隐藏
     menuButton.addEventListener('click', () => {
@@ -82,23 +90,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 背景音乐选择界面显示与隐藏
     backgroundMusicButton.addEventListener('click', () => {
-        if (backgroundMusicMenu.style.display === 'none') {
-            backgroundMusicMenu.style.display = 'block';
-            backgroundMusicMenu.style.opacity = '1';
-        } else {
-            backgroundMusicMenu.style.display = 'none';
-            backgroundMusicMenu.style.opacity = '0';
-        }
-    });
-
-    // 快速回到顶部
-    scrollTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'block' ? 'none' : 'block';
     });
 
     // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
     document.addEventListener('click', (e) => {
-        if (e.target === sideMenu || e.target === backgroundMusicMenu || e.target.closest('.side-menu') || e.target.closest('.background-music-menu')) {
+        if (e.target === sideMenu || e.target === backgroundMusicMenu) {
             return;
         }
         sideMenu.style.left = '-100%';
@@ -114,24 +111,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 阻止事件冒泡
-    menuButton.addEventListener('click', function(event) {
-        event.stopPropagation();
+    // 快速回到顶部
+    scrollTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    backgroundMusicButton.addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
-    scrollTopButton.addEventListener('click', function(event) {
-        event.stopPropagation();
+
+    // 目录快速定位
+    document.querySelectorAll('.side-menu-list a').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const blockId = anchor.getAttribute('href');
+            const element = document.querySelector(blockId);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+            sideMenu.style.left = '-100%'; // 关闭侧边菜单
+        });
     });
 
     // 背景音乐选择
     document.querySelectorAll('.music-select').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.stopPropagation(); // 阻止事件冒泡
+        button.addEventListener('click', () => {
             const musicSrc = button.getAttribute('data-src');
-            document.getElementById('backgroundMusicPlayer').src = musicSrc;
-            document.getElementById('backgroundMusicPlayer').play();
+            backgroundMusicPlayer.src = musicSrc;
+            backgroundMusicPlayer.play();
             backgroundMusicMenu.style.display = 'none'; // 关闭背景音乐选择界面
         });
     });
