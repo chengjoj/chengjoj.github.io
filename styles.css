@@ -11,6 +11,7 @@ body, html {
     background-position: center center; /* 确保背景图片居中显示 */
 }
 
+/* 头部样式 */
 .header {
     text-align: center;
     font-size: 14px;
@@ -33,6 +34,7 @@ body, html {
     justify-content: center;
 }
 
+/* 弹跳圆形样式 */
 .bouncing-circle {
     position: absolute;
     width: 75px; /* 增加圆形图片大小 */
@@ -43,6 +45,7 @@ body, html {
     cursor: pointer;
 }
 
+/* 标题样式 */
 .title {
     position: absolute;
     top: 50%;
@@ -54,11 +57,13 @@ body, html {
     animation: colorChange 2s infinite alternate;
 }
 
+/* 颜色变化动画 */
 @keyframes colorChange {
     0% { color: #3498db; }
     100% { color: #2ecc71; }
 }
 
+/* 消息样式 */
 .message {
     position: absolute;
     top: 80%;
@@ -70,6 +75,7 @@ body, html {
     display: none;
 }
 
+/* 重置按钮样式 */
 .reset-button {
     position: absolute;
     bottom: 10px;
@@ -83,6 +89,7 @@ body, html {
     font-size: 14px;
 }
 
+/* 侧边图片样式 */
 .side-image {
     position: fixed;
     top: -200px; /* 向上移动图片 */
@@ -94,11 +101,13 @@ body, html {
     pointer-events: none; /* 防止图片阻挡点击 */
 }
 
+/* 左侧侧边图片样式 */
 .side-image.left {
     left: 0;
     background-image: url('output-onlinegiftools.gif'); /* 左侧GIF图片 */
 }
 
+/* 右侧侧边图片样式 */
 .side-image.right {
     right: 0;
     background-image: url('output-onlinegiftools.gif'); /* 右侧GIF图片 */
@@ -107,7 +116,7 @@ body, html {
 /* 按钮容器样式 */
 .button-container {
     width: 800px; /* 与弹跳容器宽度一致 */
-    margin: 0 auto; /* 水平居中 */
+    margin: 40px auto; /* 增加外边距 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,7 +126,7 @@ body, html {
 .button {
     width: 100%; /* 与弹跳容器宽度一致 */
     height: 350px; /* 比弹跳容器稍高 */
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* 增加按钮之间的间距 */
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -139,7 +148,7 @@ body, html {
     background-size: cover;
     background-position: center;
     mix-blend-mode: multiply; /* 混合模式 */
-    opacity: 0.5; /* 背景图片的透明效果 */
+    opacity: 0.8; /* 背景图片的透明效果 */
     z-index: 0; /* 确保背景在最底层 */
 }
 
@@ -157,6 +166,7 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1); /* 轻微灰色背景 */
     padding: 20px;
 }
 
@@ -204,6 +214,12 @@ body, html {
     transition: top 0.3s ease-in-out; /* 滑动动画 */
 }
 
+.top-bar-button {
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
 /* 侧边菜单样式 */
 .side-menu {
     position: fixed;
@@ -216,6 +232,38 @@ body, html {
     transition: left 0.3s ease-in-out; /* 弹出动画 */
     overflow-y: auto;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20% 0; /* 调整目录内容位置 */
+}
+
+.side-menu-header {
+    font-size: 24px; /* 增大字体大小 */
+    margin-bottom: 20px;
+}
+
+.side-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px; /* 增加列表上下间距 */
+}
+
+.side-menu-list li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px; /* 增大字体大小 */
+}
+
+.side-menu-footer {
+    font-size: 16px; /* 增大字体大小 */
+    line-height: 1.6; /* 增加行高 */
+    margin-top: 20px; /* 增加与列表的间距 */
+    text-align: center;
 }
 
 /* 背景音乐选择界面样式 */
@@ -233,4 +281,23 @@ body, html {
     display: none; /* 初始隐藏 */
     opacity: 0;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* 弹出动画 */
+}
+
+/* 背景音乐选择界面列表项 */
+.background-music-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.background-music-menu button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
