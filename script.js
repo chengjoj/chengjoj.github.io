@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
     document.addEventListener('click', (event) => {
-        if (event.target === menuButton || event.target === backgroundMusicButton) {
-            return; // 如果点击的是按钮，则不执行任何操作
+        if (event.target === menuButton || event.target === backgroundMusicButton || event.target === backgroundMusicMenu || event.target.closest('.background-music-menu')) {
+            return; // 如果点击的是按钮或菜单本身，则不执行任何操作
         }
         sideMenu.style.left = '-100%';
         backgroundMusicMenu.style.display = 'none';
