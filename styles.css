@@ -16,7 +16,7 @@ body, html {
     text-align: center;
     font-size: 14px;
     color: black; /* 文字颜色调整为黑色 */
-    padding: 10px 0; /* 上下边距 */
+    padding: 20px 0; /* 上下边距 */
 }
 
 /* 弹跳容器样式 */
@@ -92,7 +92,7 @@ body, html {
 /* 侧边图片样式 */
 .side-image {
     position: fixed;
-    top: -80px; /* 向上移动图片 */
+    top: -75px; /* 向上移动图片 */
     bottom: 0;
     width: 200px; /* 根据实际图片尺寸调整 */
     background-size: contain;
@@ -126,7 +126,7 @@ body, html {
 .button {
     width: 100%; /* 与弹跳容器宽度一致 */
     height: 350px; /* 比弹跳容器稍高 */
-    margin-bottom: 40px; /* 增加按钮之间的间距 */
+    margin-bottom: 50px; /* 增加按钮之间的间距 */
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -247,7 +247,7 @@ body, html {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 50px; /* 增加列表上下间距 */
+    margin-bottom: 10px; /* 增加列表上下间距 */
 }
 
 .side-menu-list li a {
