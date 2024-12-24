@@ -84,19 +84,22 @@ document.addEventListener('DOMContentLoaded', function() {
     backgroundMusicPlayer.play();
 
     // 侧边菜单显示与隐藏
-    menuButton.addEventListener('click', () => {
+    sideMenu.style.left = '-100%'; // 初始隐藏侧边菜单
+    menuButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // 阻止事件冒泡
         sideMenu.style.left = sideMenu.style.left === '0px' ? '-100%' : '0';
     });
 
     // 背景音乐选择界面显示与隐藏
-    backgroundMusicButton.addEventListener('click', () => {
+    backgroundMusicButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // 阻止事件冒泡
         backgroundMusicMenu.style.display = backgroundMusicMenu.style.display === 'block' ? 'none' : 'block';
     });
 
     // 点击界面以外的地方使侧边菜单和背景音乐选择界面消失
     document.addEventListener('click', (e) => {
-        if (e.target === sideMenu || e.target === backgroundMusicMenu) {
-            return;
+        if (e.target === menuButton || e.target === backgroundMusicButton || e.target === scrollTopButton) {
+            return; // 如果点击的是按钮，则不执行任何操作
         }
         sideMenu.style.left = '-100%';
         backgroundMusicMenu.style.display = 'none';
@@ -112,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 快速回到顶部
-    scrollTopButton.addEventListener('click', () => {
+    scrollTopButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // 阻止事件冒泡
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -120,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.side-menu-list a').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation(); // 阻止事件冒泡
             const blockId = anchor.getAttribute('href');
             const element = document.querySelector(blockId);
             window.scrollTo({
@@ -132,7 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 背景音乐选择
     document.querySelectorAll('.music-select').forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // 阻止事件冒泡
             const musicSrc = button.getAttribute('data-src');
             backgroundMusicPlayer.src = musicSrc;
             backgroundMusicPlayer.play();
