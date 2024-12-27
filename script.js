@@ -110,11 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 页面滚动时顶部横栏的显示与隐藏
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        if (scrollY > 50) { // 当向下滚动超过50px时隐藏横栏
-            topBar.style.top = '-50px'; // 可以调整隐藏的距离
-        } else { // 当向上滚动到顶部时显示横栏
+        // 只要页面向上滚动，就显示顶部横栏
+        if (window.scrollY > 0) {
             topBar.style.top = '0';
+        } else {
+            topBar.style.top = '-50px'; // 当页面滚动到顶部时隐藏横栏
         }
     });
 
