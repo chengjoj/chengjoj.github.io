@@ -155,9 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const particleContainer = document.getElementById('particle-container');
     const canvasWidth = window.innerWidth;
     const canvasHeight = window.innerHeight;
-    const particles = [];
-
-    let lastTime = 0;
 
     function createParticle(x, y) {
         const particle = document.createElement('div');
@@ -166,12 +163,12 @@ document.addEventListener('DOMContentLoaded', function() {
         particle.style.top = `${y}px`;
         particleContainer.appendChild(particle);
 
-        const velocityX = (Math.random() - 0.5) * 5;
-        const velocityY = (Math.random() - 0.5) * 5;
+        let velocityX = (Math.random() - 0.5) * 5;
+        let velocityY = (Math.random() - 0.5) * 5;
 
-        function updateParticle(currentTime) {
-            const deltaX = velocityX * (currentTime - lastTime) / 1000;
-            const deltaY = velocityY * (currentTime - lastTime) / 1000;
+        function updateParticle() {
+            const deltaX = velocityX;
+            const deltaY = velocityY;
 
             const newLeft = parseFloat(particle.style.left) + deltaX;
             const newTop = parseFloat(particle.style.top) + deltaY;
@@ -191,23 +188,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         requestAnimationFrame(updateParticle);
-        particles.push({ particle, updateParticle });
     }
 
     function animateParticles() {
-        const currentTime = new Date().getTime();
-
-        particles.forEach((particle) => {
-            particle.updateParticle(currentTime);
+        window.addEventListener('mousemove', (event) => {
+            createParticle(event.clientX, event.clientY);
         });
-
-        lastTime = currentTime;
-        requestAnimationFrame(animateParticles);
     }
 
     animateParticles();
-
-    window.addEventListener('mousemove', (event) => {
-        createParticle(event.clientX, event.clientY);
-    });
 });
