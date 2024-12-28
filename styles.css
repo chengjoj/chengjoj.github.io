@@ -303,22 +303,3 @@ body, html {
     cursor: pointer;
     font-size: 16px;
 }
-
-/* 粒子特效容器样式 */
-#particle-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none; /* 防止粒子阻挡其他元素的点击 */
-    z-index: 999; /* 确保粒子在最上层 */
-}
-
-/* 粒子样式 */
-.particle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 1s, transform 1s;
-}
