@@ -150,3 +150,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const particleContainer = document.getElementById('particle-container');
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
+    const particles = [];
+
+    let lastTime = 0;
+
+    function createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particleContainer.appendChild(particle);
+
+        const velocityX = (Math.random() - 0.5) * 5;
+        const velocityY = (Math.random() - 0.5) * 5;
+
+        function updateParticle(currentTime) {
+            const deltaX = velocityX * (currentTime - lastTime) / 1000;
+            const deltaY = velocityY * (currentTime - lastTime) / 1000;
+
+            const newLeft = parseFloat(particle.style.left) + deltaX;
+            const newTop = parseFloat(particle.style.top) + deltaY;
+
+            particle.style.left = `${newLeft}px`;
+            particle.style.top = `${newTop}px`;
+
+            if (Math.random() < 0.05) {
+                particle.style.opacity = parseFloat(particle.style.opacity) - 0.01;
+            }
+
+            if (particle.style.opacity <= 0 || newLeft < 0 || newLeft > canvasWidth || newTop < 0 || newTop > canvasHeight) {
+                particle.remove();
+            } else {
+                requestAnimationFrame(updateParticle);
+            }
+        }
+
+        requestAnimationFrame(updateParticle);
+        particles.push({ particle, updateParticle });
+    }
+
+    function animateParticles() {
+        const currentTime = new Date().getTime();
+
+        particles.forEach((particle) => {
+            particle.updateParticle(currentTime);
+        });
+
+        lastTime = currentTime;
+        requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    window.addEventListener('mousemove', (event) => {
+        createParticle(event.clientX, event.clientY);
+    });
+});
