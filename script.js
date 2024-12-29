@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const musicSrc = button.getAttribute('data-src');
             backgroundMusicPlayer.src = musicSrc;
             backgroundMusicPlayer.play();
-            backgroundMusicMenu.style.display = 'none'; // 关闭背景音乐选择界面
+            backgroundMusicMenu.style.display = 'none'; //
         });
     });
 });
