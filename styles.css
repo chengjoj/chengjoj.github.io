@@ -124,7 +124,6 @@ body, html {
     overflow: hidden;
     position: relative;
     color: black; /* 文字颜色 */
-    text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
     background-color: rgba(255, 255, 255, 0.3); /* 半透明背景 */
@@ -191,6 +190,16 @@ body, html {
 
 .button:active {
     transform: scale(0.95);
+}
+
+/* 确保按钮内的<a>标签没有下划线 */
+.button a {
+    text-decoration: none; /* 移除下划线 */
+    color: inherit; /* 继承字体颜色 */
+}
+
+.button a:hover, .button a:focus {
+    text-decoration: none; /* 移除悬停和聚焦时的下划线 */
 }
 
 /* 顶部横栏样式 */
