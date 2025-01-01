@@ -129,8 +129,6 @@ body, html {
     background-color: rgba(255, 255, 255, 0.3); /* 半透明背景 */
     background-size: cover; /* 背景图片覆盖整个按钮 */
     background-position: center; /* 背景图片居中 */
-    position: relative;
-    text-decoration: none; /* 确保没有下划线 */
 }
 
 .button::before {
@@ -140,7 +138,8 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: inherit; /* 继承按钮的背景图片 */
+    background-size: cover;
+    background-position: center;
     opacity: 0.5; /* 透明度设置 */
     z-index: 0; /* 确保背景在文本之下 */
     border-radius: 10px; /* 与按钮的border-radius保持一致 */
@@ -153,7 +152,6 @@ body, html {
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
-    text-decoration: none; /* 确保没有下划线 */
 }
 
 .button-left {
@@ -162,7 +160,6 @@ body, html {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    text-decoration: none; /* 确保没有下划线 */
 }
 
 .button-right {
@@ -171,23 +168,20 @@ body, html {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    text-decoration: none; /* 确保没有下划线 */
 }
 
 .button h2 {
     margin: 0;
-    font-size: 100px; /* 进一步增加字体大小 */
+    font-size: 60px; /* 进一步增加字体大小 */
     color: #000; /* 最黑的字体颜色 */
     text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1); /* 使用白色阴影增加对比度 */
-    text-decoration: none; /* 确保没有下划线 */
 }
 
 .button p {
     margin: 0;
     font-size: 30px; /* 进一步增加字体大小 */
-    color: #111; /* 最黑的字体颜色 */
+    color: #000; /* 最黑的字体颜色 */
     text-shadow: 0 0 5px rgba(255, 255, 255, 1); /* 使用白色阴影增加对比度 */
-    text-decoration: none; /* 确保没有下划线 */
 }
 
 .button:hover, .button:focus {
@@ -196,6 +190,16 @@ body, html {
 
 .button:active {
     transform: scale(0.95);
+}
+
+/* 确保按钮内的<a>标签没有下划线 */
+.button a {
+    text-decoration: none; /* 移除下划线 */
+    color: inherit; /* 继承字体颜色 */
+}
+
+.button a:hover, .button a:focus {
+    text-decoration: none; /* 移除悬停和聚焦时的下划线 */
 }
 
 /* 顶部横栏样式 */
