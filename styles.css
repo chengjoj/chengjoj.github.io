@@ -175,14 +175,14 @@ body, html {
     margin: 0;
     font-size: 100px; /* 增大字体大小 */
     color: #000; /* 深灰色文字 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影以增强对比度 */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1); /* 使用白色阴影增加对比度 */
 }
 
 .button p {
     margin: 0;
     font-size: 30px; /* 增大字体大小 */
     color: #111; /* 深灰色文字 */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 添加文字阴影以增强对比度 */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 1); /* 添加文字阴影以增强对比度 */
 }
 
 .button:hover, .button:focus {
