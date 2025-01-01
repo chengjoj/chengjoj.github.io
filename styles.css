@@ -115,17 +115,21 @@ body, html {
 
 /* 按钮样式 */
 .button {
-    position: relative;
     width: 800px; /* 按钮宽度固定为800px */
     height: 350px; /* 按钮高度 */
     margin: 100px auto; /* 水平居中并增加垂直间距 */
+    display: flex;
+    align-items: center;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
     color: black; /* 文字颜色 */
     text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
     background-color: rgba(255, 255, 255, 0.3); /* 半透明背景 */
+    background-size: cover; /* 背景图片覆盖整个按钮 */
+    background-position: center; /* 背景图片居中 */
 }
 
 /* 按钮背景图片 - 半透明效果 */
@@ -136,10 +140,9 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-size: cover;
-    background-position: center;
+    background: inherit; /* 继承按钮的背景图片 */
     opacity: 0.5; /* 透明度设置 */
-    z-index: -1;
+    z-index: 0; /* 确保背景在文本之下 */
     border-radius: 10px; /* 与按钮的border-radius保持一致 */
 }
 
