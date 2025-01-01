@@ -123,7 +123,7 @@ body, html {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    color: black; /* 文字颜色 */
+    color: black
     text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
@@ -173,16 +173,16 @@ body, html {
 
 .button h2 {
     margin: 0;
-    font-size: 48px; /* 增大字体大小 */
-    color: #333; /* 深灰色文字 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影以增强对比度 */
+    font-size: 100px; /* 进一步增加字体大小 */
+    color: #000; /* 最黑的字体颜色 */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1); /* 使用白色阴影增加对比度 */
 }
 
 .button p {
     margin: 0;
-    font-size: 24px; /* 增大字体大小 */
-    color: #555; /* 深灰色文字 */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 添加文字阴影以增强对比度 */
+    font-size: 50px; /* 进一步增加字体大小 */
+    color: #333; /* 最黑的字体颜色 */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 1); /* 使用白色阴影增加对比度 */
 }
 
 .button:hover, .button:focus {
