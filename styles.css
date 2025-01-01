@@ -116,7 +116,7 @@ body, html {
 /* 按钮样式 */
 .button {
     width: 800px; /* 按钮宽度固定为800px */
-    height: 350px; /* 比弹跳容器稍高 */
+    height: 350px; /* 按钮高度 */
     margin: 100px auto; /* 水平居中并增加垂直间距 */
     display: flex;
     align-items: center;
@@ -138,14 +138,14 @@ body, html {
     bottom: 0;
     background-size: cover;
     background-position: center;
-    background-blend-mode: multiply; /* 混合模式 */
+    filter: blur(10px); /* 添加高斯模糊效果 */
     opacity: 0.5; /* 调整背景图片的透明度 */
     z-index: 0; /* 确保背景在最底层 */
 }
 
 .button-text {
     position: relative;
-    z-index: 1; /* 确保文本在背景之上 */
+    z-index: 2; /* 确保文本在背景之上 */
     width: 100%;
     display: flex;
     justify-content: space-between;
