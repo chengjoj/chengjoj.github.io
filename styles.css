@@ -126,9 +126,10 @@ body, html {
     color: black; /* 文字颜色 */
     text-decoration: none; /* 移除下划线 */
     transition: transform 0.3s; /* 过渡效果 */
-    background-color: rgba(255, 255, 255, 0.8); /* 透明效果 */
+    /* 移除背景颜色，以便透过按钮看到网页背景 */
 }
 
+/* 按钮背景图片 - 模糊效果 */
 .button::before {
     content: '';
     position: absolute;
@@ -138,14 +139,26 @@ body, html {
     bottom: 0;
     background-size: cover;
     background-position: center;
-    filter: blur(10px); /* 添加高斯模糊效果 */
-    opacity: 0.5; /* 调整背景图片的透明度 */
-    z-index: 0; /* 确保背景在最底层 */
+    filter: blur(10px); /* 高斯模糊效果 */
+    z-index: 1; /* 确保背景在文本之下 */
+}
+
+/* 按钮背景 - 网页背景 */
+.button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit; /* 继承父元素的背景 */
+    opacity: 0.5; /* 调整透明度以隐约看到背景 */
+    z-index: 0; /* 确保网页背景在最底层 */
 }
 
 .button-text {
     position: relative;
-    z-index: 2; /* 确保文本在背景之上 */
+    z-index: 2; /* 确保文本在最上层 */
     width: 100%;
     display: flex;
     justify-content: space-between;
