@@ -115,9 +115,9 @@ body, html {
 
 /* 按钮样式 */
 .button {
-    width: 800px; /* 与弹跳容器宽度一致 */
+    width: 800px; /* 按钮宽度固定为800px */
     height: 350px; /* 比弹跳容器稍高 */
-    margin-bottom: 100px; /* 增加按钮之间的间距 */
+    margin: 100px auto; /* 水平居中并增加垂直间距 */
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -138,8 +138,8 @@ body, html {
     bottom: 0;
     background-size: cover;
     background-position: center;
-    mix-blend-mode: multiply; /* 混合模式 */
-    opacity: 0.2; /* 调整背景图片的透明度 */
+    background-blend-mode: multiply; /* 混合模式 */
+    opacity: 0.5; /* 调整背景图片的透明度 */
     z-index: 0; /* 确保背景在最底层 */
 }
 
