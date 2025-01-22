@@ -1,24 +1,166 @@
-<!DOCTYPE>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>2048</title>
-<link rel="stylesheet" type="text/css" href="css/2048.css" />
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
-<script type="text/javascript" src="js/2048.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jquery.cookie.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game</title>
     <style>
-        .tile{
-            transition: .2s;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .game-container {
+            width: 400px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 10px;
+            background-color: #bbada0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            background-color: #776e65;
+            border-radius: 5px;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            background-image: url(''); /* 默认无图片 */
+        }
+
+        .score-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .score-container span {
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
- 
 <body>
-    <div id="div2048">
-        <a id="start">tap to start :-)</a>
+    <div class="game-container" id="game-container"></div>
+    <div class="score-container">
+        <div>Score: <span id="score">0</span></div>
+        <div>High Score: <span id="high-score">0</span></div>
+        <div>Low Score: <span id="low-score">0</span></div>
     </div>
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const scoreElement = document.getElementById('score');
+        const highScoreElement = document.getElementById('high-score');
+        const lowScoreElement = document.getElementById('low-score');
+
+        const gridSize = 4;
+        let board = [];
+        let score = 0;
+        let highScore = 0;
+        let lowScore = Infinity;
+
+        const tileImages = {
+            2: 'path-to-your-image-2.png',
+            4: 'path-to-your-image-4.png',
+            8: 'path-to-your-image-8.png',
+            16: 'path-to-your-image-16.png',
+            32: 'path-to-your-image-32.png',
+            64: 'path-to-your-image-64.png',
+            128: 'path-to-your-image-128.png',
+            256: 'path-to-your-image-256.png',
+            512: 'path-to-your-image-512.png',
+            1024: 'path-to-your-image-1024.png',
+            2048: 'path-to-your-image-2048.png'
+        };
+
+        function initializeGame() {
+            board = Array(gridSize).fill(null).map(() => Array(gridSize).fill(0));
+            addNewTile();
+            addNewTile();
+            renderBoard();
+        }
+
+        function renderBoard() {
+            gameContainer.innerHTML = '';
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const tileValue = board[i][j];
+                    const tile = document.createElement('div');
+                    tile.classList.add('tile');
+                    if (tileValue > 0) {
+                        tile.style.backgroundImage = `url(${tileImages[tileValue]})`;
+                        tile.style.backgroundSize = 'cover';
+                        tile.style.backgroundRepeat = 'no-repeat';
+                    }
+                    gameContainer.appendChild(tile);
+                }
+            }
+        }
+
+        function addNewTile() {
+            const emptyTiles = [];
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (board[i][j] === 0) {
+                        emptyTiles.push({ row: i, col: j });
+                    }
+                }
+            }
+            if (emptyTiles.length > 0) {
+                const randomTile = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
+                board[randomTile.row][randomTile.col] = Math.random() > 0.9 ? 4 : 2;
+            }
+        }
+
+        function moveTiles(direction) {
+            // Simplified movement logic
+            switch (direction) {
+                case 'ArrowUp':
+                    // Move tiles up
+                    break;
+                case 'ArrowDown':
+                    // Move tiles down
+                    break;
+                case 'ArrowLeft':
+                    // Move tiles left
+                    break;
+                case 'ArrowRight':
+                    // Move tiles right
+                    break;
+            }
+            addNewTile();
+            renderBoard();
+        }
+
+        function updateScore(newScore) {
+            score += newScore;
+            scoreElement.textContent = score;
+            highScore = Math.max(highScore, score);
+            highScoreElement.textContent = highScore;
+            lowScore = Math.min(lowScore, score);
+            lowScoreElement.textContent = lowScore;
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+                moveTiles(event.key);
+            }
+        });
+
+        initializeGame();
+    </script>
 </body>
-<p id="p2048"></p>
 </html>
