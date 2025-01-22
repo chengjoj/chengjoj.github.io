@@ -1,24 +1,46 @@
-<!DOCTYPE>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>2048</title>
-<link rel="stylesheet" type="text/css" href="css/2048.css" />
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
-<script type="text/javascript" src="js/2048.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jquery.cookie.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Button</title>
     <style>
-        .tile{
-            transition: .2s;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-2048 {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #776e65;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-2048:hover {
+            background-color: #8f7a66;
+            cursor: pointer;
         }
     </style>
 </head>
- 
 <body>
-    <div id="div2048">
-        <a id="start">tap to start :-)</a>
+    <div class="button-container">
+        <a href="2048.html" class="button-2048">2048</a>
     </div>
 </body>
-<p id="p2048"></p>
 </html>
