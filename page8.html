@@ -17,30 +17,40 @@
 
         .button-container {
             text-align: center;
+            padding: 20px;
         }
 
         .button-2048 {
             display: inline-block;
-            padding: 15px 30px;
-            font-size: 24px;
+            padding: 20px 40px; /* 增加按钮的内边距，使按钮更大 */
+            font-size: 28px; /* 增大字体大小 */
             font-weight: bold;
             color: #fff;
             background-color: #776e65;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px; /* 增大圆角 */
             text-decoration: none;
             transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果，使按钮更有立体感 */
         }
 
         .button-2048:hover {
             background-color: #8f7a66;
             cursor: pointer;
         }
+
+        /* 响应式设计：根据屏幕宽度调整按钮大小 */
+        @media (max-width: 768px) {
+            .button-2048 {
+                padding: 15px 30px; /* 在小屏幕上减小按钮大小 */
+                font-size: 24px; /* 减小字体大小 */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="button-container">
-        <a href="2048.html" class="button-2048">2048</a>
+        <a href="your-target-page.html" class="button-2048">2048</a>
     </div>
 </body>
 </html>
