@@ -39,7 +39,8 @@
             font-size: 32px;
             color: white;
             font-weight: bold;
-            background-image: url(''); /* 默认无图片 */
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            position: relative;
         }
 
         .score-container {
@@ -73,17 +74,17 @@
         let lowScore = Infinity;
 
         const tileImages = {
-            2: 'path-to-your-image-2.png',
-            4: 'path-to-your-image-4.png',
-            8: 'path-to-your-image-8.png',
-            16: 'path-to-your-image-16.png',
-            32: 'path-to-your-image-32.png',
-            64: 'path-to-your-image-64.png',
-            128: 'path-to-your-image-128.png',
-            256: 'path-to-your-image-256.png',
-            512: 'path-to-your-image-512.png',
-            1024: 'path-to-your-image-1024.png',
-            2048: 'path-to-your-image-2048.png'
+            2: 'img/13F17A8784B5E5757600455FFCFFBA1C.jpg',
+            4: 'img/14DB88F0C6F359FBDF7926872F3D00D4.jpg',
+            8: 'img/18F318242717BE4B703797F94679DA2D.jpg',
+            16: 'img/368234AAA4478EE22E09EEEEE0C7788D.jpg',
+            32: 'img/37EB36E9713E66EF198975F4ADF60497.jpg',
+            64: 'img/4074610683518EB126219E42CD2E1C64.jpg',
+            128: 'img/723ED37278735D74B923147FD0B029A3.jpg',
+            256: 'img/8B604324630C43811ACDB8FAE42F1637.jpg',
+            512: 'img/A3ED99EE4A70FC141A9994997A12F6CB.jpg',
+            1024: 'img/C21495B73C58358B12E8B48D4ACDDDBA.jpg',
+            2048: '20240110_1744911584205082624.jpg'
         };
 
         function initializeGame() {
@@ -126,23 +127,62 @@
         }
 
         function moveTiles(direction) {
-            // Simplified movement logic
-            switch (direction) {
-                case 'ArrowUp':
-                    // Move tiles up
-                    break;
-                case 'ArrowDown':
-                    // Move tiles down
-                    break;
-                case 'ArrowLeft':
-                    // Move tiles left
-                    break;
-                case 'ArrowRight':
-                    // Move tiles right
-                    break;
+            let hasMoved = false;
+
+            const directions = {
+                'ArrowUp': { row: -1, col: 0 },
+                'ArrowDown': { row: 1, col: 0 },
+                'ArrowLeft': { row: 0, col: -1 },
+                'ArrowRight': { row: 0, col: 1 }
+            };
+
+            const { row: dr, col: dc } = directions[direction];
+
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (board[i][j] !== 0) {
+                        let x = i;
+                        let y = j;
+                        let merged = false;
+
+                        while (
+                            x + dr >= 0 &&
+                            x + dr < gridSize &&
+                            y + dc >= 0 &&
+                            y + dc < gridSize &&
+                            board[x + dr][y + dc] === 0
+                        ) {
+                            x += dr;
+                            y += dc;
+                        }
+
+                        if (
+                            x + dr >= 0 &&
+                            x + dr < gridSize &&
+                            y + dc >= 0 &&
+                            y + dc < gridSize &&
+                            board[x + dr][y + dc] === board[i][j] &&
+                            !merged
+                        ) {
+                            board[x + dr][y + dc] *= 2;
+                            board[i][j] = 0;
+                            updateScore(board[x + dr][y + dc]);
+                            merged = true;
+                            hasMoved = true;
+                        } else if (x !== i || y !== j) {
+                            board[x][y] = board[i][j];
+                            board[i][j] = 0;
+                            hasMoved = true;
+                        }
+                    }
+                }
             }
-            addNewTile();
-            renderBoard();
+
+            if (hasMoved) {
+                addNewTile();
+                renderBoard();
+                checkGameOver();
+            }
         }
 
         function updateScore(newScore) {
@@ -154,9 +194,56 @@
             lowScoreElement.textContent = lowScore;
         }
 
+        function checkGameOver() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (board[i][j] === 0) return;
+                }
+            }
+
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (
+                        (i > 0 && board[i][j] === board[i - 1][j]) ||
+                        (i < gridSize - 1 && board[i][j] === board[i + 1][j]) ||
+                        (j > 0 && board[i][j] === board[i][j - 1]) ||
+                        (j < gridSize - 1 && board[i][j] === board[i][j + 1])
+                    ) {
+                        return;
+                    }
+                }
+            }
+
+            alert("Game Over!");
+        }
+
         document.addEventListener('keydown', (event) => {
             if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
                 moveTiles(event.key);
+            }
+        });
+
+        // 触摸操作支持
+        let startX, startY, endX, endY;
+
+        gameContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+
+        gameContainer.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX > 0) moveTiles('ArrowRight');
+                else moveTiles('ArrowLeft');
+            } else {
+                if (deltaY > 0) moveTiles('ArrowDown');
+                else moveTiles('ArrowUp');
             }
         });
 
